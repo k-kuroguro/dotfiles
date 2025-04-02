@@ -29,6 +29,6 @@ GIT_PS1_SHOWSTASHSTATE=true
 GIT_PS1_SHOWUPSTREAM=auto
 GIT_PS1_STATESEPARATOR=
 
-PS1='$(if [ $? -eq 0 ]; then echo "\033[01;32m\](^_^)"; else echo "\033[01;31m\](>_<)"; fi)\[\033[00m\] \[\033[00;33m\]\t\[\033[00m\] \[\033[01;32m\]\u$(if [ -n "$SSH_CONNECTION" ]; then echo "@\h"; fi)\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\] $(__git_ps1 "(%s)")\n\$ '
+PS1='$(if [ $? -eq 0 ]; then echo "\033[01;32m\](o_o)b"; else echo "\033[01;31m\](x_x;)"; fi)\[\033[00m\] \[\033[00;33m\]\t\[\033[00m\] \[\033[01;32m\]\u$(if [ -n "$SSH_CONNECTION" ]; then echo "@\h"; fi)\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\] $(__git_ps1 "(%s)")\n\$ '
 
 export FZF_DEFAULT_OPTS="--height=70%"
