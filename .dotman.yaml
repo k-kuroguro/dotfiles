@@ -1,0 +1,10 @@
+mappings:
+  config/bash/.bashrc: ~/.bashrc
+  config/bash/.bash_aliases: ~/.bash_aliases
+  config/git/.gitconfig: ~/.gitconfig
+  config/alacritty/alacritty.toml: ~/.config/alacritty/alacritty.toml
+  config/alacritty/theme.toml: ~/.config/alacritty/theme.toml
+  config/tmux/.tmux.conf: ~/.tmux.conf
+  config/fd/ignore: ~/.config/fd/ignore
+  config/bat/config: ~/.config/bat/config
+  tpm: ~/.tmux/plugins/tpm

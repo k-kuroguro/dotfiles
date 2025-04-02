@@ -1,0 +1,9 @@
+[alias]
+	cm = commit
+	co = checkout
+   cob = checkout -b
+   br = branch
+[init]
+	defaultBranch = main
+[include]
+   path = ~/.gitconfig.local

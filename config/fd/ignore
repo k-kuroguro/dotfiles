@@ -1,0 +1,14 @@
+.git/
+
+.venv/
+__pycache__/
+.mypy_cache/
+
+.vscode-server/
+.cargo/
+.rustup/
+.fzf/
+.cache/
+
+*.bak
+

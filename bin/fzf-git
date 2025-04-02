@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# Interactive utilities via fzf for git
+
+readonly AVAILABLE_COMMANDS=('stash' 'branch')
+
+_get_fzf_cmd() {
+   if [[ "${FZF_TMUX}" == "1" ]]; then
+      echo "fzf-tmux ${FZF_TMUX_OPTS}" # fzf-tmux doesn't read $FZF_TMUX_OPTS automatically
+   else
+      echo 'fzf'
+   fi
+}
+
+help() {
+   cat <<- EOF
+	Usage: $(basename "$0") <COMMAND>
+	Commands: ${AVAILABLE_COMMANDS[@]}
+	EOF
+}
+
+stash() {
+   local fzf_cmd
+   fzf_cmd="$(_get_fzf_cmd)"
+
+   local selected
+   if selected="$(git stash list | ${fzf_cmd} \
+      --preview $'echo {} | sed s/:.*// | xargs git show --color=always' \
+      --header 'ctrl-x (drop) / ctrl-o (pop) / ctrl-a (apply)' \
+      --bind 'ctrl-x:execute(echo {} | sed s/:.*// | xargs git stash drop -q)+reload(git stash list)' \
+      --bind 'ctrl-o:execute(echo {} | sed s/:.*// | xargs git stash pop -q)+reload(git stash list)' \
+      --bind 'ctrl-a:execute(echo {} | sed s/:.*// | xargs git stash apply -q)' \
+   )" && [[ -n "${selected}" ]]; then
+      echo "${selected%%:*}"
+   fi
+}
+
+branch() {
+   local fzf_cmd
+   fzf_cmd="$(_get_fzf_cmd)"
+
+   local selected
+   if selected="$(git branch -a -vv --sort -HEAD --color=always | column -t -s $'\t' | ${fzf_cmd} \
+      --preview $'echo {} | sed \'s/^\* //\' | awk \'{print $1}\' | xargs -I {} git log --color=always --oneline {} --' \
+      --header 'ctrl-o (checkout) / ctrl-alt-x (delete)' \
+      --bind $'ctrl-alt-x:execute(echo {} | sed \'s/^\* //\' | awk \'{print $1}\' | xargs git branch -d)+reload(git branch -a -vv --sort -HEAD --color=always | column -t -s $\'\t\')' \
+      --bind $'ctrl-o:execute(echo {} | sed \'s/^\* //\' | awk \'{print $1}\' | xargs git checkout -q)+reload(git branch -a -vv --sort -HEAD --color=always | column -t -s $\'\t\')' \
+   )" && [[ -n "${selected}" ]]; then
+      echo "${selected#\* }" | awk '{print $1}'
+   fi
+}
+
+main() {
+   local cmd="$1"
+   case "${cmd}" in
+      stash)
+         stash
+         ;;
+      branch)
+         branch
+         ;;
+      *)
+         help
+         return 1
+         ;;
+   esac
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+   main "$@"
+fi

@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# Switch tmux session/window using fzf, including remote SSH sessions
+
+list_windows() {
+   tmux list-windows -a -F "#{session_name}:#{window_index}:#{window_name}" | while read -r line; do
+      echo -e "local\t$line"
+   done
+
+   [[ ! -f ~/.ssh/config ]] && return
+
+   local ssh_hosts
+   ssh_hosts=$(grep -i '^Host ' ~/.ssh/config | awk '{print $2}' | grep -v '[*?]' | sort)
+
+   for host in $ssh_hosts; do
+      {
+         local windows result
+         windows=$(ssh -o ConnectTimeout=2 -o BatchMode=yes "${host}" 'tmux list-windows -a -F "#{session_name}:#{window_index}:#{window_name}"' 2>/dev/null)
+         if [[ -n "${windows}" ]]; then
+            result=$(while IFS= read -r line; do printf "%s\t%s\n" "${host}" "${line}"; done <<< "${windows}")
+            echo -e "${result}"
+         fi
+      } &
+   done
+   wait
+}
+
+
+main() {
+   local fzf_cmd
+   if [[ "${FZF_TMUX}" == "1" ]]; then
+      fzf_cmd="fzf-tmux ${FZF_TMUX_OPTS}" # fzf-tmux doesn't read $FZF_TMUX_OPTS automatically
+   else
+      fzf_cmd='fzf'
+   fi
+
+   local preview
+   preview=$(cat <<- 'EOF'
+	host=$(echo {} | cut -f1)
+	info=$(echo {} | cut -f2)
+
+	session=$(echo "${info}" | cut -d: -f1)
+	index=$(echo "${info}" | cut -d: -f2)
+
+	if [[ "${host}" == 'local' ]]; then
+	   tmux capture-pane -ep -t "${session}:${index}" | tac | awk '/[^[:space:]]/ {p=1} p' | tac
+	else
+	   ssh -o ConnectTimeout=2 -o BatchMode=yes "${host}" "tmux capture-pane -ep -t '${session}:${index}'" 2>/dev/null | tac | awk '/[^[:space:]]/ {p=1} p' | tac
+	fi
+	EOF
+   )
+
+   local selected
+   selected=$(list_windows | ${fzf_cmd} --exit-0 \
+      --preview "${preview}" \
+      --preview-window follow,nowrap
+   )
+   if [[ $? != 0 || -z "${selected}" ]]; then
+      return 0
+   fi
+
+   IFS=$'\t' read -r host session_info <<< "${selected}"
+   session_name=$(echo "${session_info}" | cut -d: -f1)
+   window_index=$(echo "${session_info}" | cut -d: -f2)
+
+   if [[ "${host}" == 'local' ]]; then
+      if [[ -z "${TMUX}" ]]; then
+         tmux attach-session -t "${session_name}:${window_index}"
+      else
+         tmux switch-client -t "${session_name}:${window_index}"
+      fi
+   else
+      ssh -t "${host}" "tmux attach-session -t '${session_name}:${window_index}'"
+   fi
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+   main
+fi

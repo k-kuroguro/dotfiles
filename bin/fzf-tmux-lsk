@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# List tmux key bindings via fzf
+
+main() {
+   local fzf_cmd
+   if [[ "${FZF_TMUX}" == "1" ]]; then
+      fzf_cmd="fzf-tmux ${FZF_TMUX_OPTS}" # fzf-tmux doesn't read $FZF_TMUX_OPTS automatically
+   else
+      fzf_cmd='fzf'
+   fi
+   fzf_cmd="${fzf_cmd} --wrap"
+
+   local selected
+   selected=$(tmux lsk | ${fzf_cmd})
+   if [[ $? != 0 || -z "${selected}" ]]; then
+      return 0
+   fi
+
+   if [[ -z "${TMUX}" ]]; then
+      echo "${selected}"
+   else
+      tmux display-message "${selected}"
+   fi
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+   main
+fi
