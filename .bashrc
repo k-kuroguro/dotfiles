@@ -23,21 +23,12 @@ eval "$(gh completion -s bash)"
 
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUPSTREAM=auto
+GIT_PS1_STATESEPARATOR=
+
+PS1='$(if [ $? -eq 0 ]; then echo "\033[01;32m\]✔"; else echo "\033[01;31m\]✘"; fi)\[\033[00m\] \[\033[00;33m\]\t\[\033[00m\] \[\033[01;32m\]\u$(if [ -n "$SSH_CONNECTION" ]; then echo "@\h"; fi)\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\] $(__git_ps1 "(%s)")\n\$ '
 
 export FZF_DEFAULT_OPTS="--height=70%"
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUPSTREAM=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWSTASHSTATE=1
-
-############### ターミナルのコマンド受付状態の表示変更
-# \u ユーザ名
-# \h ホスト名
-# \W カレントディレクトリ
-# \w カレントディレクトリのパス
-# \n 改行
-# \d 日付
-# \[ 表示させない文字列の開始
-# \] 表示させない文字列の終了
-# \$ $
-export PS1='\[\033[1;32m\]\u\[\033[00m\]:\[\033[1;34m\]\w\[\033[1;31m\]$(__git_ps1)\[\033[00m\] \$ '

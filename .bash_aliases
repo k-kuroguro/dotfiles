@@ -18,5 +18,7 @@ alias untargz='tar -zxvf'
 
 alias uvt='uv run task'
 
+alias cls='clear'
+
 alias nsmi='nvidia-smi'
 alias csmi='cluster-smi'
