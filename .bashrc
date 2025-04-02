@@ -11,26 +11,33 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 shopt -s checkwinsize
 
-if [ -f ~/.bash_aliases ]; then
-   . ~/.bash_aliases
-fi
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
-if [ -f /etc/bash_completion ]; then
-   . /etc/bash_completion
-fi
+[ -f /etc/bash_completion ] && . /etc/bash_completion
 
-if [ -f ~/.cargo/env ]; then
-   . ~/.cargo/env
-fi
+[ -f ~/.cargo/env ] && . ~/.cargo/env
 
-if [ -f ~/.fzf.bash ]; then
-   . ~/.fzf.bash
-fi
+[ -f ~/.fzf.bash ] && . ~/.fzf.bash
 
 eval "$(gh completion -s bash)"
 
-if [ -f ~/.bashrc.local ]; then
-   . ~/.bashrc.local
-fi
+[ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+export FZF_DEFAULT_OPTS="--height=70%"
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUPSTREAM=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWSTASHSTATE=1
+
+############### ターミナルのコマンド受付状態の表示変更
+# \u ユーザ名
+# \h ホスト名
+# \W カレントディレクトリ
+# \w カレントディレクトリのパス
+# \n 改行
+# \d 日付
+# \[ 表示させない文字列の開始
+# \] 表示させない文字列の終了
+# \$ $
+export PS1='\[\033[1;32m\]\u\[\033[00m\]:\[\033[1;34m\]\w\[\033[1;31m\]$(__git_ps1)\[\033[00m\] \$ '
