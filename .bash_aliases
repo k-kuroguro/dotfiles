@@ -10,6 +10,8 @@ alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 
+alias tree='eza -T'
+
 alias grep='grep --color=auto'
 
 alias va='source .venv/bin/activate'
