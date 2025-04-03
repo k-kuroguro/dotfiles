@@ -41,7 +41,7 @@ if [ -n $VIRTUAL_ENV ] && [ $(command -v python) ]; then
    else
       ENV_NAME=$(basename "$VIRTUAL_ENV")
    fi
-   PYTHON_INFO="(py:$(python -V |& cut -d ' ' -f2-1)@$ENV_NAME)"
+   PYTHON_INFO="(py:$(python -V |& cut -d ' ' -f2)@${ENV_NAME})"
 else
    PYTHON_INFO=''
 fi
