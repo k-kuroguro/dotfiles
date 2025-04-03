@@ -4,6 +4,8 @@ alias ....='cd ../../..'
 
 alias g='git'
 
+alias mkdir='mkdir -p'
+
 alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
