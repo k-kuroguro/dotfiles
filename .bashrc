@@ -11,6 +11,10 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 shopt -s checkwinsize
 
+pupdate() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$1:$PATH" ;; esac; }
+pupdate ~/.local/bin
+unset -f pupdate
+
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
