@@ -35,11 +35,11 @@ USERNAME='\[\033[01;32m\]\u\[\033[00m\]'
 HOSTNAME_IF_SSH='\[\033[01;32m\]$(if [ -n "$SSH_CONNECTION" ]; then echo "@\h"; fi)\[\033[00m\]'
 CURRENT_DIR='\[\033[01;36m\]\w\[\033[00m\]'
 GIT_BRANCH='$(__git_ps1 "(git:%s)")'
-if [ -n $VIRTUAL_ENV ] && [ $(command -v python) ]; then
+if [ -n "$VIRTUAL_ENV" ] && command -v python &> /dev/null; then
    if [ -n "$VIRTUAL_ENV_PROMPT" ]; then
       ENV_NAME="${VIRTUAL_ENV_PROMPT//[()]/}"
    else
-      ENV_NAME=$(basename "$VIRTUAL_ENV")
+      ENV_NAME="$(basename $VIRTUAL_ENV)"
    fi
    PYTHON_INFO="(py:$(python -V |& cut -d ' ' -f2)@${ENV_NAME})"
 else
