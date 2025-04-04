@@ -25,6 +25,7 @@ alias bashrc='source ~/.bashrc'
 alias untar='tar -xvf'
 alias untargz='tar -zxvf'
 
+alias uvr='uv run'
 alias uvt='uv run task'
 
 alias cls='clear'
