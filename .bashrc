@@ -43,7 +43,7 @@ PYTHON_INFO=' $(if [ "${VIRTUAL_ENV:+x}" ] && command -v python &>/dev/null; the
 
 PS1="${LAST_COMMAND_STATUS}${CURRENT_TIME}${USERNAME}${HOSTNAME_IF_SSH}:${CURRENT_DIR}${GIT_BRANCH}${PYTHON_INFO}\n$ "
 
-export FZF_DEFAULT_OPTS='--height 70% --exit-0 --ansi --bind ctrl-s:preview-page-down,ctrl-w:preview-page-up'
+export FZF_DEFAULT_OPTS='--exit-0 --height 70% --reverse --ansi --bind "ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-\/:change-preview-window(80%|hidden|)" --preview-border line'
 export FZF_CTRL_R_OPTS='--preview "echo {} | bat --color=always --language=sh --style=plain"'
 export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=plain {}"'
 export FZF_ALT_C_OPTS='--preview "tree -L 2 {}"'
