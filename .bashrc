@@ -23,7 +23,7 @@ unset -f pupdate
 
 [ -f ~/.fzf.bash ] && . ~/.fzf.bash
 
-eval "$(gh completion -s bash)"
+command -v gh &>/dev/null && eval "$(gh completion -s bash)"
 
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
