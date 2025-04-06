@@ -1,0 +1,5 @@
+[alias]
+	cm = commit
+	co = checkout
+[init]
+	defaultBranch = main

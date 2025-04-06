@@ -2,8 +2,8 @@
 
 For Linux.
 
-# Installation
+## Installation
 
 ```bash
-. install.sh
+. bin/install.sh
 ```
