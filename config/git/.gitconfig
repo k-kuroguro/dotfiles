@@ -1,5 +1,8 @@
 [alias]
 	cm = commit
 	co = checkout
+   fco = !git checkout $(git branch -vv | fzf +m | awk '{print $1==\"*\" ? $2 : $1}')
+   cob = checkout -b
+   br = branch
 [init]
 	defaultBranch = main
