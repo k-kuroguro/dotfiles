@@ -38,7 +38,7 @@ CURRENT_TIME=' \[\033[00;33m\]\t\[\033[00m\]'
 USERNAME=' \[\033[01;32m\]\u\[\033[00m\]'
 HOSTNAME_IF_SSH='\[\033[01;32m\]$(if [ -n "$SSH_CONNECTION" ]; then echo "@\h"; fi)\[\033[00m\]'
 CURRENT_DIR='\[\033[01;36m\]\w\[\033[00m\]'
-GIT_BRANCH=' $(__git_ps1 "(git:%s)")'
+GIT_BRANCH='$(__git_ps1 " (git:%s)")'
 PYTHON_INFO='$(if [ "${VIRTUAL_ENV:+x}" ] && command -v python &>/dev/null; then ENV_NAME="$(echo ${VIRTUAL_ENV_PROMPT//[()]/} | xargs)"; [ -z "$ENV_NAME" ] && ENV_NAME="$(basename "$VIRTUAL_ENV")"; echo " (python:$ENV_NAME@$(python -V |& cut -d " " -f2))"; fi)'
 RUST_VERSION='$(if [ -f "Cargo.toml" ] && command -v rustc &>/dev/null; then echo " (rustc:$(rustc -V | cut -d " " -f2))"; fi)'
 
