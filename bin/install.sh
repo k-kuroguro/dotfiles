@@ -1,8 +1,8 @@
 #!/bin/bash
 
 DOTFILES_DIR=$(cd $(dirname $(dirname ${BASH_SOURCE:-$0})); pwd)
-TARGET_FILES=("config/bash/.bashrc" "config/bash/.bash_aliases")
-DESTS=($HOME/.bashrc $HOME/.bash_aliases)
+TARGET_FILES=("config/bash/.bashrc" "config/bash/.bash_aliases" "config/git/.gitconfig")
+DESTS=($HOME/.bashrc $HOME/.bash_aliases $HOME/.gitconfig)
 
 if [ "$HOME" = "$DOTFILES_DIR" ]; then
    echo "Dotfiles directory and home directory are the same. No action needed."
@@ -35,8 +35,3 @@ for i in "${!TARGET_FILES[@]}"; do
    ln -sf "$SRC" "$DEST"
    echo "Linked $DEST -> $SRC"
 done
-
-echo "Setting up gitconfig include..."
-gitconfig=$DOTFILES_DIR/config/git/.gitconfig
-git config --global --add include.path "$gitconfig"
-echo "Included $gitconfig in global gitconfig."
