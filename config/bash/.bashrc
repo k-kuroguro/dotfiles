@@ -46,7 +46,7 @@ PS1="${LAST_COMMAND_STATUS}${CURRENT_TIME}${USERNAME}${HOSTNAME_IF_SSH}:${CURREN
 export FZF_DEFAULT_OPTS='--exit-0 --height 70% --reverse --ansi --bind "ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-\/:change-preview-window(80%|hidden|)" --preview-border line --preview-window wrap'
 export FZF_CTRL_R_OPTS='--preview "echo {} | bat --color=always --language=sh --style=plain"'
 export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=plain {}"'
-export FZF_ALT_C_OPTS='--preview "tree -L 2 {}"'
+export FZF_ALT_C_OPTS='--preview "eza -T -L=2 --color=always {}"'
 export FZF_DEFAULT_COMMAND='fd --type f --color always'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_ALT_C_COMMAND='fd --type d --color always'
