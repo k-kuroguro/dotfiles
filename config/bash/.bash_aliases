@@ -5,12 +5,20 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 alias ~='cd ~'
+alias -- -='cd -'
 
 alias cd..='cd ..'
 alias cd~='cd ~'
+alias cd-='cd -'
 
-alias mv='mv -i'
-alias cp='cp -i'
+alias rm='rm -Iv'
+alias mv='mv -iv'
+alias cp='cp -iv'
+alias ln='ln -iv'
+
+alias chmod='chmod --preserve-root'
+alias chown='chown --preserve-root'
+alias chgrp='chgrp --preserve-root'
 
 alias mkdir='mkdir -p'
 
@@ -38,3 +46,11 @@ alias cls='clear'
 
 alias nsmi='nvidia-smi'
 alias csmi='cluster-smi'
+
+alias cg='cd `git rev-parse --show-toplevel`'
+
+alias nowdate='date +"%Y-%m-%d"'
+alias nowtime='date +"%T"'
+alias now='date +"%Y-%m-%d %T"'
+
+alias whi='which'
