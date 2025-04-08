@@ -1,0 +1,8 @@
+# List of symbolic link mappings.
+# Each mapping defines the source file (relative to config directory) and the destination path.
+- src: bash/.bashrc
+  dest: ~/.bashrc
+- src: bash/.bash_aliases
+  dest: ~/.bash_aliases
+- src: git/.gitconfig
+  dest: ~/.gitconfig

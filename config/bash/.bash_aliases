@@ -2,6 +2,7 @@ alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
+alias ~='cd ~'
 
 alias cd..='cd ..'
 alias cd~='cd ~'
@@ -16,6 +17,8 @@ alias sl='ls'
 alias tree='eza -T'
 
 alias grep='grep --color=auto'
+
+alias path='echo -e ${PATH//:/\\n}'
 
 alias va='source .venv/bin/activate'
 alias bashrc='source ~/.bashrc'
