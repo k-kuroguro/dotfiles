@@ -4,3 +4,15 @@ dot command
 uninstall.sh
 installl dep, commmands
 fzf preview image
+https://github.com/babarot/enhancd
+https://github.com/sindresorhus/pure
+to zsh
+https://yuyusuki.hatenablog.com/entry/2020/12/11/012727
+dotman設計参考: https://github.com/anishathalye/dotbot, https://github.com/cli-stuff/dotload, https://github.com/rhysd/dotfiles
+https://github.com/denolfe/dotfiles/tree/main
+
+dotmanはdotfilesのsymlink管理とgit追従だけ
+makeで外部コマンドをインストール
+
+Alacritty + tmuxにしたい
+https://zenn.dev/a24k/articles/20221027-alacritty-tmux
