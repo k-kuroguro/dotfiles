@@ -7,6 +7,9 @@ alias ~='cd ~'
 alias cd..='cd ..'
 alias cd~='cd ~'
 
+alias mv='mv -i'
+alias cp='cp -i'
+
 alias mkdir='mkdir -p'
 
 alias ls='ls --color=auto'
