@@ -1,0 +1,4 @@
+mappings:
+  config/bash/.bashrc: ~/.bashrc
+  config/bash/.bash_aliases: ~/.bash_aliases
+  config/git/.gitconfig: ~/.gitconfig

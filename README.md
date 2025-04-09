@@ -4,6 +4,8 @@ For Linux.
 
 ## Installation
 
+Use [dotman](https://github.com/k-kuroguro/dotman) for installation.
+
 ```bash
-. bin/install.sh
+$ dotman install
 ```
