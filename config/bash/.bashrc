@@ -18,12 +18,14 @@ unset -f pupdate
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
+[ -f ~/.bash_completion/alacritty ] && . ~/.bash_completion/alacritty
 
 [ -f ~/.cargo/env ] && . ~/.cargo/env
 
 [ -f ~/.fzf.bash ] && . ~/.fzf.bash
 
 command -v gh &>/dev/null && eval "$(gh completion -s bash)"
+command -v dotman &>/dev/null && eval "$(dotman completion -s bash)"
 
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 

@@ -2,3 +2,5 @@ mappings:
   config/bash/.bashrc: ~/.bashrc
   config/bash/.bash_aliases: ~/.bash_aliases
   config/git/.gitconfig: ~/.gitconfig
+  config/alacritty/alacritty.toml: ~/.config/alacritty/alacritty.toml
+  config/alacritty/theme.toml: ~/.config/alacritty/theme.toml
