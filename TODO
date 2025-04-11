@@ -16,3 +16,5 @@ makeで外部コマンドをインストール
 
 Alacritty + tmuxにしたい
 https://zenn.dev/a24k/articles/20221027-alacritty-tmux
+
+fzf + tmux switcher

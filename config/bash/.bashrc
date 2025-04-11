@@ -53,5 +53,7 @@ export FZF_ALT_C_OPTS='--preview "eza -T -L=2 --color=always {}"'
 export FZF_DEFAULT_COMMAND='fd --type f --color always'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_ALT_C_COMMAND='fd --type d --color always'
+export FZF_TMUX=1
+export FZF_TMUX_OPTS="-p 80%"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
