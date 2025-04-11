@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# If not running interactively, don't do anything
+# If not running interactively, don't do anything.
 [[ $- == *i* ]] || return
 
 HISTSIZE=10000
@@ -11,7 +11,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 shopt -s checkwinsize
 
-pupdate() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$1:$PATH" ;; esac; }
+pupdate() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$1:$PATH" ;; esac; } # Add to PATH if not already there.
 pupdate ~/.local/bin
 unset -f pupdate
 
@@ -27,6 +27,7 @@ unset -f pupdate
 
 command -v gh &>/dev/null && eval "$(gh completion -s bash)"
 command -v dotman &>/dev/null && eval "$(dotman completion -s bash)"
+command -v uv &>/dev/null && eval "$(uv generate-shell-completion bash)"
 
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
@@ -46,6 +47,8 @@ PYTHON_INFO='$(if [ "${VIRTUAL_ENV:+x}" ] && command -v python &>/dev/null; then
 RUST_VERSION='$(if [ -f "Cargo.toml" ] && command -v rustc &>/dev/null; then echo " (rustc:$(rustc -V | cut -d " " -f2))"; fi)'
 
 PS1="${LAST_COMMAND_STATUS}${CURRENT_TIME}${USERNAME}${HOSTNAME_IF_SSH}:${CURRENT_DIR}${GIT_BRANCH}${PYTHON_INFO}${RUST_VERSION}\n$ "
+## (o_o)b 12:34:56 username@hostname:/path/to/dir (git:main*) (python:venv@3.8.10) (rustc:1.54.0)
+## $
 
 export FZF_DEFAULT_OPTS='--exit-0 --height 70% --reverse --ansi --bind "ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-\/:change-preview-window(80%|hidden|)" --preview-border line --preview-window wrap'
 export FZF_CTRL_R_OPTS='--preview "echo {} | bat --color=always --language=sh --style=plain"'
