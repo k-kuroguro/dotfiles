@@ -4,3 +4,5 @@ mappings:
   config/git/.gitconfig: ~/.gitconfig
   config/alacritty/alacritty.toml: ~/.config/alacritty/alacritty.toml
   config/alacritty/theme.toml: ~/.config/alacritty/theme.toml
+  config/tmux/.tmux.conf: ~/.tmux.conf
+  config/tmux/plugins: ~/.tmux/plugins
