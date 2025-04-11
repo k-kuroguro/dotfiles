@@ -5,4 +5,4 @@ mappings:
   config/alacritty/alacritty.toml: ~/.config/alacritty/alacritty.toml
   config/alacritty/theme.toml: ~/.config/alacritty/theme.toml
   config/tmux/.tmux.conf: ~/.tmux.conf
-  config/tmux/plugins: ~/.tmux/plugins
+  tpm: ~/.tmux/plugins/tpm
