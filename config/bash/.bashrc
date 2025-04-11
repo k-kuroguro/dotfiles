@@ -18,8 +18,8 @@ unset -f pupdate
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
-[ -f ~/.bash_completion/alacritty ] && . ~/.bash_completion/alacritty
-[ -f ~/.bash_completion/tmux ] && . ~/.bash_completion/tmux
+[ -f ~/.bash_completion.d/alacritty ] && . ~/.bash_completion.d/alacritty
+[ -f ~/.bash_completion.d/tmux ] && . ~/.bash_completion.d/tmux
 
 [ -f ~/.cargo/env ] && . ~/.cargo/env
 
