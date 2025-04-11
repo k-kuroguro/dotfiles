@@ -19,6 +19,7 @@ unset -f pupdate
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 [ -f ~/.bash_completion/alacritty ] && . ~/.bash_completion/alacritty
+[ -f ~/.bash_completion/tmux ] && . ~/.bash_completion/tmux
 
 [ -f ~/.cargo/env ] && . ~/.cargo/env
 

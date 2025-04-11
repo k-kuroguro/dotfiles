@@ -1,2 +1,7 @@
-#!#!/bin/bash
+#! /bin/bash
 
+cd $(dirname ${BASH_SOURCE:-$0})
+
+# Setup bash completion for tmux
+mkdir -p ~/.bash_completion
+curl -fSsL "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux" > ~/.bash_completion/tmux
