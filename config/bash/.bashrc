@@ -3,6 +3,8 @@
 # If not running interactively, don't do anything.
 [[ $- == *i* ]] || return
 
+export DOTFILES_DIR=$(dirname "$(dirname "$(dirname "$(readlink -f "${BASH_SOURCE:-$0}")")")")
+
 HISTSIZE=10000
 HISTFILESIZE=10000
 HISTIGNORE=ls:history:pwd
@@ -13,6 +15,7 @@ shopt -s checkwinsize
 
 pupdate() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$1:$PATH" ;; esac; } # Add to PATH if not already there.
 pupdate ~/.local/bin
+pupdate $DOTFILES_DIR/bin
 unset -f pupdate
 
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
