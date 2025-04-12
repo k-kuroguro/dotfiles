@@ -56,3 +56,4 @@ alias now='date +"%Y-%m-%d %T"'
 alias whi='which'
 
 alias fzf-tmux='fzf-tmux $FZF_TMUX_OPTS'
+alias fts='fzf-tmux-switcher'
