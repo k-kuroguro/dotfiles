@@ -53,6 +53,11 @@ PS1="${LAST_COMMAND_STATUS}${CURRENT_TIME}${USERNAME}${HOSTNAME_IF_SSH}:${CURREN
 ## (o_o)b 12:34:56 username@hostname:/path/to/dir (git:main*) (python:venv@3.8.10) (rustc:1.54.0)
 ## $
 
+if command -v tmux >/dev/null 2>&1; then
+  TMUX_VERSION=$(tmux -V | cut -d ' ' -f 2)
+else
+  TMUX_VERSION=""
+fi
 export FZF_DEFAULT_OPTS='--height 70% --reverse --ansi --bind "ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-\/:change-preview-window(80%|hidden|)" --preview-border line --preview-window 50%,wrap'
 export FZF_CTRL_R_OPTS='--preview "echo {} | bat --color=always --language=sh --style=plain"'
 export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=plain {}"'
@@ -61,6 +66,10 @@ export FZF_DEFAULT_COMMAND='fd --type f --color always'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_ALT_C_COMMAND='fd --type d --color always'
 export FZF_TMUX=1
-export FZF_TMUX_OPTS="-p 80%"
+if [[ "$(printf '%s\n' "3.2" "$TMUX_VERSION" | sort -V | head -n1)" = "3.2" ]]; then
+   export FZF_TMUX_OPTS="-p 80%"
+else
+   export FZF_TMUX_OPTS=""
+fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
