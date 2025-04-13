@@ -65,11 +65,11 @@ export FZF_ALT_C_OPTS='--preview "eza -T -L=2 --color=always {}"'
 export FZF_DEFAULT_COMMAND='fd --type f --color always'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_ALT_C_COMMAND='fd --type d --color always'
-export FZF_TMUX=1
-if [[ "$(printf '%s\n' "3.2" "$TMUX_VERSION" | sort -V | head -n1)" = "3.2" ]]; then
-   export FZF_TMUX_OPTS="-p 80%"
+export FZF_TMUX_OPTS="-p 80%"
+if [[ "$(printf '%s\n' "3.2" "$TMUX_VERSION" | sort -V | head -n1)" = "3.2" ]]; then # Disable tmux integration for tmux < 3.2
+   export FZF_TMUX=1
 else
-   export FZF_TMUX_OPTS="-d 80%"
+   export FZF_TMUX=0
 fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
