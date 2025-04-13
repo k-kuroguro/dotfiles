@@ -12,17 +12,17 @@ function main {
    fi
 
    preview="echo {} | cut -d: -f1,2 | xargs tmux capture-pane -ep -t | tac | awk '/[^[:space:]]/ {p=1} p' | tac" # Get the pane content by removing the last empty lines
-   selected=$($lsw_cmd | $fzf_cmd --exit-0 --preview "echo {} | cut -d: -f1,2 | xargs tmux capture-pane -ep -t | tac | awk '/[^[:space:]]/ {p=1} p' | tac" --preview-window follow)
+   selected=$($lsw_cmd | $fzf_cmd --exit-0 --preview "echo {} | cut -d: -f1,2 | xargs tmux capture-pane -ep -t | tac | awk '/[^[:space:]]/ {p=1} p' | tac" --preview-window follow,nowrap)
    if [[ -z $selected ]]; then
       return 0
    fi
 
    IFS=":" read -r session_name window_index window_name <<< "$selected"
 
-   if [[ $TERM_PROGRAM == "tmux" || ! -z $TMUX ]]; then
-      tmux switch-client -t $session_name:$window_index
-   else
+   if [[ -z $TMUX ]]; then
       tmux attach-session -t $session_name:$window_index
+   else
+      tmux switch-client -t $session_name:$window_index
    fi
 }
 
