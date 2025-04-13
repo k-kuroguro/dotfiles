@@ -19,7 +19,7 @@ function main {
 
    IFS=":" read -r session_name window_index window_name <<< "$selected"
 
-   if [[ $TERM_PROGRAM == "tmux" ]]; then
+   if [[ $TERM_PROGRAM == "tmux" || ! -z $TMUX ]]; then
       tmux switch-client -t $session_name:$window_index
    else
       tmux attach-session -t $session_name:$window_index
