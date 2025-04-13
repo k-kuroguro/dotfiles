@@ -69,7 +69,7 @@ export FZF_TMUX=1
 if [[ "$(printf '%s\n' "3.2" "$TMUX_VERSION" | sort -V | head -n1)" = "3.2" ]]; then
    export FZF_TMUX_OPTS="-p 80%"
 else
-   export FZF_TMUX_OPTS=""
+   export FZF_TMUX_OPTS="-d 80%"
 fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
