@@ -48,8 +48,8 @@ PYTHON_INFO='$(if [ "${VIRTUAL_ENV:+x}" ] && command -v python &>/dev/null; then
 RUST_VERSION='$(if [ -f "Cargo.toml" ] && command -v rustc &>/dev/null; then echo " (rustc:$(rustc -V | cut -d " " -f2))"; fi)'
 
 PS1="${LAST_COMMAND_STATUS}${CURRENT_TIME}${USERNAME}${HOSTNAME_IF_SSH}:${CURRENT_DIR}${GIT_BRANCH}${PYTHON_INFO}${RUST_VERSION}\n$ "
-## (o_o)b 12:34:56 username@hostname:/path/to/dir (git:main*) (python:venv@3.8.10) (rustc:1.54.0)
-## $
+# (o_o)b 12:34:56 username@hostname:/path/to/dir (git:main*) (python:venv@3.8.10) (rustc:1.54.0)
+# $
 
 export FZF_DEFAULT_OPTS='--height 70% --reverse --ansi --bind "ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-\/:change-preview-window(80%|hidden|)" --preview-border line --preview-window 50%,wrap'
 export FZF_CTRL_R_OPTS='--preview "echo {} | bat --color=always --language=sh --style=plain"'
@@ -64,3 +64,5 @@ export FZF_TMUX_OPTS="-p 80%"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
+
+return 0
