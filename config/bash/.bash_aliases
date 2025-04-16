@@ -57,3 +57,5 @@ alias whi='which'
 
 alias fzf-tmux='fzf-tmux $FZF_TMUX_OPTS'
 alias fts='fzf-tmux-switcher'
+
+alias shutdown='sudo shutdown -h now'

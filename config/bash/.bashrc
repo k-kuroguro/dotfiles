@@ -15,6 +15,7 @@ shopt -s checkwinsize
 
 pupdate() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$1:$PATH" ;; esac; } # Add to PATH if not already there.
 pupdate ~/.local/bin
+pupdate ~/bin
 pupdate $DOTFILES_DIR/bin
 unset -f pupdate
 
@@ -65,4 +66,4 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
-return 0
+:
