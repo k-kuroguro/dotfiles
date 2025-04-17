@@ -1,0 +1,11 @@
+.git/
+.venv/
+
+.vscode-server/
+.cargo/
+.rustup/
+.fzf/
+.cache/
+
+*.bak
+
