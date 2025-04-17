@@ -11,7 +11,7 @@ alias cd..='cd ..'
 alias cd~='cd ~'
 alias cd-='cd -'
 
-alias cdf='zi'
+alias cdi='zi'
 alias cdg='cd `git rev-parse --show-toplevel`'
 
 alias rm='rm -Iv'

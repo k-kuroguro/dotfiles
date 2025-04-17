@@ -66,6 +66,15 @@ export FZF_TMUX_OPTS="-p 80%"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 export _ZO_FZF_OPTS=$FZF_DEFAULT_OPTS" --preview \"echo {} | awk '{print \$2}' | xargs eza -T -L=2 --color=always\""
+if command -v zi >/dev/null 2>&1; then
+   cd() {
+      if [ $# -eq 0 ]; then
+         zi
+      else
+         builtin cd "$@"
+      fi
+   }
+fi
 
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
