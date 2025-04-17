@@ -13,7 +13,7 @@ curl -fSsL "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/mas
 
 # Dependencies Check
 not_installed_list=()
-for cmd in fzf cargo eza bat gh fd tmux uv git; do
+for cmd in fzf cargo eza bat gh fd tmux uv git zoxide; do
     if ! command -v $cmd &> /dev/null; then
         not_installed_list+=($cmd)
     fi
@@ -24,4 +24,4 @@ else
    echo "The following dependencies are not installed: ${not_installed_list[@]}"
 fi
 
-# TODO: fzf, cargo, eza, bat, gh, fd, tmux, dotman, uv, HackGen NF, alacritty 
+# TODO: fzf, cargo, eza, bat, gh, fd, tmux, dotman, uv, HackGen NF, zoxide

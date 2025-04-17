@@ -11,6 +11,9 @@ alias cd..='cd ..'
 alias cd~='cd ~'
 alias cd-='cd -'
 
+alias cdf='zi'
+alias cdg='cd `git rev-parse --show-toplevel`'
+
 alias rm='rm -Iv'
 alias mv='mv -iv'
 alias cp='cp -iv'
@@ -46,8 +49,6 @@ alias cls='clear'
 
 alias nsmi='nvidia-smi'
 alias csmi='cluster-smi'
-
-alias cg='cd `git rev-parse --show-toplevel`'
 
 alias nowdate='date +"%Y-%m-%d"'
 alias nowtime='date +"%T"'

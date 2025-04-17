@@ -32,6 +32,7 @@ unset -f pupdate
 command -v gh &>/dev/null && eval "$(gh completion -s bash)"
 command -v dotman &>/dev/null && eval "$(dotman completion -s bash)"
 command -v uv &>/dev/null && eval "$(uv generate-shell-completion bash)"
+command -v zoxide &>/dev/null && eval "$(zoxide init bash)"
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -63,6 +64,8 @@ export FZF_TMUX=1
 export FZF_TMUX_OPTS="-p 80%"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+export _ZO_FZF_OPTS=$FZF_DEFAULT_OPTS" --preview \"echo {} | awk '{print \$2}' | xargs eza -T -L=2 --color=always\""
 
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
