@@ -30,6 +30,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias sl='ls'
 
+alias bat='bat --color=always'
+
 alias tree='eza -T'
 
 alias grep='grep --color=auto'
