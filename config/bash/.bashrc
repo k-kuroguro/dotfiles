@@ -22,8 +22,11 @@ unset -f pupdate
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
-[ -f ~/.bash_completion.d/alacritty ] && . ~/.bash_completion.d/alacritty
-[ -f ~/.bash_completion.d/tmux ] && . ~/.bash_completion.d/tmux
+if [ -d ~/.bash_completion.d ]; then
+   for f in ~/.bash_completion.d/*; do
+      [ -f "$f" ] && . "$f"
+   done
+fi
 
 [ -f ~/.cargo/env ] && . ~/.cargo/env
 
@@ -33,6 +36,7 @@ command -v gh &>/dev/null && eval "$(gh completion -s bash)"
 command -v dotman &>/dev/null && eval "$(dotman completion -s bash)"
 command -v uv &>/dev/null && eval "$(uv generate-shell-completion bash)"
 command -v zoxide &>/dev/null && eval "$(zoxide init bash)"
+command -v rg &>/dev/null && eval "$(rg --generate complete-bash)"
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
