@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Switch tmux session/window using fzf, including remote SSH sessions
+# - Remote SSH hosts are read from ~/.ssh/config (only simple Host entries without wildcards are considered)
+# - SSH connections use BatchMode and ConnectTimeout options, so password prompts are not supported
 
 list_windows() {
    tmux list-windows -a -F "#{session_name}:#{window_index}:#{window_name}" | while read -r line; do
