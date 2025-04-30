@@ -42,9 +42,10 @@ branch() {
    local selected
    if selected="$(git branch -a -vv --sort -HEAD --color=always | column -t -s $'\t' | ${fzf_cmd} \
       --preview $'echo {} | sed \'s/^\* //\' | awk \'{print $1}\' | xargs -I {} git log --color=always --oneline {} --' \
-      --header 'ctrl-o (checkout) / ctrl-alt-x (delete)' \
-      --bind $'ctrl-alt-x:execute(echo {} | sed \'s/^\* //\' | awk \'{print $1}\' | xargs git branch -d)+reload(git branch -a -vv --sort -HEAD --color=always | column -t -s $\'\t\')' \
+      --header 'ctrl-o (checkout) / ctrl-x (delete) / ctrl-alt-x (force delete)' \
       --bind $'ctrl-o:execute(echo {} | sed \'s/^\* //\' | awk \'{print $1}\' | xargs git checkout -q)+reload(git branch -a -vv --sort -HEAD --color=always | column -t -s $\'\t\')' \
+      --bind $'ctrl-x:execute(echo {} | sed \'s/^\* //\' | awk \'{print $1}\' | xargs git branch -d)+reload(git branch -a -vv --sort -HEAD --color=always | column -t -s $\'\t\')' \
+      --bind $'ctrl-alt-x:execute(echo {} | sed \'s/^\* //\' | awk \'{print $1}\' | xargs git branch -D)+reload(git branch -a -vv --sort -HEAD --color=always | column -t -s $\'\t\')' \
    )" && [[ -n "${selected}" ]]; then
       echo "${selected#\* }" | awk '{print $1}'
    fi
