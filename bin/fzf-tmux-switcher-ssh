@@ -2,6 +2,7 @@
 
 # Switch tmux session/window using fzf, including remote SSH sessions
 # - Remote SSH hosts are read from ~/.ssh/config (only simple Host entries without wildcards are considered)
+# - Additional remote hosts can be specified via the FTSS_HOSTS environment variable (colon-separated list, e.g. host1:host2)
 # - SSH connections use BatchMode and ConnectTimeout options, so password prompts are not supported
 
 list_windows() {
@@ -9,12 +10,18 @@ list_windows() {
       echo -e "local\t$line"
    done
 
-   [[ ! -f ~/.ssh/config ]] && return
+   local ssh_hosts=""
+   if [[ -f ~/.ssh/config ]]; then
+      ssh_hosts+=$(grep -i '^Host ' ~/.ssh/config | awk '{print $2}' | grep -v '[*?]' | sort)
+   fi
+   if [[ -n "${FTSS_HOSTS}" ]]; then
+      ssh_hosts+=" $(tr ':' ' ' <<< "${FTSS_HOSTS}")"
+   fi
 
-   local ssh_hosts
-   ssh_hosts=$(grep -i '^Host ' ~/.ssh/config | awk '{print $2}' | grep -v '[*?]' | sort)
+   [[ -n "${ssh_hosts}" ]] || return 0
 
-   for host in $ssh_hosts; do
+   readarray -t ssh_hosts_array < <(tr ' ' '\n' <<< "${ssh_hosts}" | sort -u)
+   for host in "${ssh_hosts_array[@]}"; do
       {
          local windows result
          windows=$(ssh -o ConnectTimeout=2 -o BatchMode=yes "${host}" 'tmux list-windows -a -F "#{session_name}:#{window_index}:#{window_name}"' 2>/dev/null)
