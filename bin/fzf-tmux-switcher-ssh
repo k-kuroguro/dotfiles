@@ -72,7 +72,11 @@ main() {
          tmux switch-client -t "${session_name}:${window_index}"
       fi
    else
-      ssh -t "${host}" "tmux attach-session -t '${session_name}:${window_index}'"
+      if [[ -z "${TMUX}" ]]; then
+         ssh -t "${host}" "tmux attach-session -t '${session_name}:${window_index}'"
+      else
+         tmux detach-client -E "ssh -t '${host}' 'tmux attach-session -t '${session_name}:${window_index}''"
+      fi
    fi
 }
 
