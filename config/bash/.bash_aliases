@@ -52,9 +52,9 @@ alias cls='clear'
 alias nsmi='nvidia-smi'
 alias csmi='cluster-smi'
 
-alias nowdate='date +"%Y-%m-%d"'
-alias nowtime='date +"%T"'
-alias now='date +"%Y-%m-%d %T"'
+alias nowdate=$'date +\'%Y-%m-%d\''
+alias nowtime=$'date +\'%T\''
+alias now=$'date +\'%Y-%m-%d %T\''
 
 alias whi='which'
 complete -c whi
@@ -62,7 +62,7 @@ complete -c whi
 alias tm='tmux'
 complete -F _tmux tm
 
-alias fzf-tmux='fzf-tmux $FZF_TMUX_OPTS'
+alias fzf-tmux='fzf-tmux ${FZF_TMUX_OPTS}'
 alias fts='fzf-tmux-switcher'
 alias ftss='fzf-tmux-switcher-ssh'
 
@@ -71,3 +71,5 @@ alias fgs='fzf-git stash'
 alias fgb='fzf-git branch'
 
 alias shutdown='sudo shutdown -h now'
+
+alias bell=$'echo -e \'\a\''
