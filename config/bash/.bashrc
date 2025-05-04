@@ -33,8 +33,6 @@ fi
 
 [[ -f ~/.fzf.bash ]] && . ~/.fzf.bash
 
-[[ -f ~/.bash-preexec.sh ]] && . ~/.bash-preexec.sh
-
 command -v gh &>/dev/null && eval "$(gh completion -s bash)"
 command -v dotman &>/dev/null && eval "$(dotman completion -s bash)"
 command -v uv &>/dev/null && eval "$(uv generate-shell-completion bash)"
@@ -105,6 +103,27 @@ fi
 
 bind -x '"\C-f":fzf-tmux-switcher-ssh'
 
+export CMD_END_BELL_SECS=180 # Ring a bell if a command runs for more than CMD_END_BELL_SECS seconds.
+
+__command_timer_preexec() {
+   __timer_start=$(date +%s)
+}
+
+__command_timer_precmd() {
+   if [[ -n $__timer_start ]]; then
+      if (( $(date +%s) - __timer_start > CMD_END_BELL_SECS )); then
+         echo -e '\a'
+      fi
+      
+      unset __timer_start
+   fi
+}
+
+preexec_functions+=(__command_timer_preexec)
+precmd_functions+=(__command_timer_precmd)
+
 [[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
+
+[[ -f ~/.bash-preexec.sh ]] && . ~/.bash-preexec.sh
 
 :
