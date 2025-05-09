@@ -114,7 +114,7 @@ __command_timer_precmd() {
       if (( $(date +%s) - __timer_start > CMD_END_BELL_SECS )); then
          echo -e '\a'
       fi
-      
+
       unset __timer_start
    fi
 }
