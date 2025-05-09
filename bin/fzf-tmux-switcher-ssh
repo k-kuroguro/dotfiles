@@ -20,8 +20,13 @@ list_windows() {
 
    [[ -n "${ssh_hosts}" ]] || return 0
 
+   local local_hostname
+   local_hostname=$(uname -n)
+
    readarray -t ssh_hosts_array < <(tr ' ' '\n' <<< "${ssh_hosts}" | sort -u)
    for host in "${ssh_hosts_array[@]}"; do
+      [[ "${host}" == "${local_hostname}" ]] && continue
+
       {
          local windows result
          windows=$(ssh -o ConnectTimeout=2 -o BatchMode=yes "${host}" 'tmux list-windows -a -F "#{session_name}:#{window_index}:#{window_name}"' 2>/dev/null)
