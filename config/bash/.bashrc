@@ -33,12 +33,15 @@ fi
 
 [[ -f ~/.fzf.bash ]] && . ~/.fzf.bash
 
+[[ -f ~/.deno ]]&& . ~/.deno/env
+
 command -v gh &>/dev/null && eval "$(gh completion -s bash)"
 command -v dotman &>/dev/null && eval "$(dotman completion -s bash)"
 command -v uv &>/dev/null && eval "$(uv generate-shell-completion bash)"
 command -v zoxide &>/dev/null && eval "$(zoxide init bash --no-cmd)"
 command -v rg &>/dev/null && eval "$(rg --generate complete-bash)"
 command -v zellij &>/dev/null && eval "$(zellij setup --generate-completion bash)"
+command -v deno &>/dev/null && eval "$(deno completions bash)"
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
