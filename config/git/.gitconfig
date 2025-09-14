@@ -1,9 +1,24 @@
 [alias]
-	cm = commit
-	co = checkout
+   cm = commit
+   co = checkout
    cob = checkout -b
    br = branch
 [init]
-	defaultBranch = main
+   defaultBranch = main
+[commit]
+   gpgsign = true
+[tag]
+   gpgsign = true
+[user]
+   name = k-kuroguro
+   email = 68765710+k-kuroguro@users.noreply.github.com
+[core]
+   editor = code --wait
+[credential "https://github.com"]
+   helper = 
+   helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+   helper = 
+   helper = !gh auth git-credential
 [include]
    path = ~/.gitconfig.local
