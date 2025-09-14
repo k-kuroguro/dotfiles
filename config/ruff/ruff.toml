@@ -1,0 +1,13 @@
+line-length = 100
+
+[lint]
+fixable = ["ALL"]
+unfixable = []
+ignore = ["B905", "D417", "E501", "PLR0913"]
+
+[format]
+quote-style = "single"
+line-ending = "auto"
+
+[lint.pydocstyle]
+convention = "google"
