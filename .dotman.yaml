@@ -7,4 +7,5 @@ mappings:
   config/tmux/.tmux.conf: ~/.tmux.conf
   config/fd/ignore: ~/.config/fd/ignore
   config/bat/config: ~/.config/bat/config
+  config/clang-format/.clang-format: ~/.clang-format
   tpm: ~/.tmux/plugins/tpm
