@@ -5,7 +5,7 @@ import {
    download,
    getRevertActions,
    symlink,
-} from 'https://pax.deno.dev/k-kuroguro/dotdep/src/mod.ts';
+} from 'https://raw.githubusercontent.com/k-kuroguro/dotdep/master/src/mod.ts';
 
 import { parseArgs } from 'jsr:@std/cli@1.0.22/parse-args';
 import { Spinner } from 'jsr:@std/cli@1.0.22/unstable-spinner';
