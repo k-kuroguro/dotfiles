@@ -37,7 +37,7 @@ fi
 
 [[ -f ~/.cargo/env ]] && . ~/.cargo/env
 
-[[ -f ~/.deno ]]&& . ~/.deno/env
+[[ -f ~/.deno/env ]] && . ~/.deno/env
 
 command -v gh &>/dev/null && eval "$(gh completion -s bash)"
 command -v uv &>/dev/null && eval "$(uv generate-shell-completion bash)"
