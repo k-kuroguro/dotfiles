@@ -8,7 +8,7 @@ install() {
    bash scripts/tmux-installer.sh install
    bash scripts/deno-installer.sh install
 
-   deno run -A --no-lock dotfiles.ts deploy
+   ~/.deno/bin/deno run -A --no-lock dotfiles.ts deploy
 
    ${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin/aqua i -a
 
