@@ -5,5 +5,11 @@ For Linux.
 ## Installation
 
 ```bash
-$ deno run -A --no-lock dotfiles.ts deploy
+$ bash installer.sh install
+```
+
+## Uninstallation
+
+```bash
+$ bash installer.sh uninstall
 ```

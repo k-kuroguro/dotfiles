@@ -18,7 +18,13 @@ pupdate() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$1:$PATH" ;; esac; } #
 pupdate ~/.local/bin
 pupdate ~/bin
 pupdate "${DOTFILES_DIR}/bin"
+pupdate "${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin"
 unset -f pupdate
+
+export AQUA_GLOBAL_CONFIG=~/.config/aqua/aqua.yaml # Must be set before running any aqua-installed commands
+export AQUA_REMOVE_MODE=pl
+export AQUA_DISABLE_LAZY_INSTALL=true
+export AQUA_PROGRESS_BAR=true
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
@@ -31,17 +37,15 @@ fi
 
 [[ -f ~/.cargo/env ]] && . ~/.cargo/env
 
-[[ -f ~/.fzf.bash ]] && . ~/.fzf.bash
-
 [[ -f ~/.deno ]]&& . ~/.deno/env
 
 command -v gh &>/dev/null && eval "$(gh completion -s bash)"
-command -v dotman &>/dev/null && eval "$(dotman completion -s bash)"
 command -v uv &>/dev/null && eval "$(uv generate-shell-completion bash)"
 command -v zoxide &>/dev/null && eval "$(zoxide init bash --no-cmd)"
 command -v rg &>/dev/null && eval "$(rg --generate complete-bash)"
-command -v zellij &>/dev/null && eval "$(zellij setup --generate-completion bash)"
 command -v deno &>/dev/null && eval "$(deno completions bash)"
+command -v aqua &> /dev/null && eval "$(aqua completion bash)"
+command -v fzf &>/dev/null && eval "$(fzf --bash)"
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -52,9 +56,9 @@ GIT_PS1_STATESEPARATOR=
 LAST_COMMAND_STATUS='$(if [ $? -eq 0 ]; then echo "\033[01;32m\](o_o)b"; else echo "\033[01;31m\](x_x;)"; fi)\[\033[00m\]'
 CURRENT_TIME=' \[\033[00;33m\]\t\[\033[00m\]'
 USERNAME=' \[\033[01;32m\]\u\[\033[00m\]'
-HOSTNAME_IF_SSH='\[\033[01;32m\]$(if [ -n "$SSH_CONNECTION" ]; then echo "@\h"; fi)\[\033[00m\]'
+HOSTNAME_IF_SSH='\[\033[01;32m\]$(if [ -n "${SSH_CONNECTION:-}" ]; then echo "@\h"; fi)\[\033[00m\]'
 CURRENT_DIR='\[\033[01;36m\]\w\[\033[00m\]'
-GIT_BRANCH='$(__git_ps1 " (git:%s)")'
+GIT_BRANCH='$(command -v __git_ps1 &>/dev/null && __git_ps1 " (git:%s)" || :)'
 PYTHON_INFO='$(if [ "${VIRTUAL_ENV:+x}" ] && command -v python &>/dev/null; then ENV_NAME="$(echo ${VIRTUAL_ENV_PROMPT//[()]/} | xargs)"; [ -z "$ENV_NAME" ] && ENV_NAME="$(basename "$VIRTUAL_ENV")"; echo " (python:$ENV_NAME@$(python -V |& cut -d " " -f2))"; fi)'
 RUST_VERSION='$(if [ -f "Cargo.toml" ] && command -v rustc &>/dev/null; then echo " (rustc:$(rustc -V | cut -d " " -f2))"; fi)'
 

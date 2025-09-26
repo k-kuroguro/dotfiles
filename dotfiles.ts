@@ -101,6 +101,7 @@ const actions: Action[] = [
    symlink({ src: './config/clang-format/.clang-format', dest: '~/.clang-format', overwrite: true }),
    symlink({ src: './config/ruff/ruff.toml', dest: '~/.config/ruff/ruff.toml', overwrite: true }),
    symlink({ src: './config/rustfmt/rustfmt.toml', dest: '~/.config/rustfmt/rustfmt.toml', overwrite: true }),
+   symlink({ src: './config/aqua/aqua.yaml', dest: '~/.config/aqua/aqua.yaml', overwrite: true }),
    symlink({ src: './tpm', dest: '~/.tmux/plugins/tpm', overwrite: true }),
    download({
       url: 'https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux',
