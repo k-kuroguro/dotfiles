@@ -28,7 +28,7 @@ install() {
       | grep "browser_download_url.*appimage" \
       | cut -d : -f 2,3 \
       | tr -d '"' \
-      | wget -qi - -O tmux.appimage
+      | wget --no-check-certificate -qi - -O tmux.appimage
 
    chmod +x tmux.appimage
    mkdir -p "$(dirname "${TMUX_BIN}")"
