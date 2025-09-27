@@ -12,7 +12,7 @@ install() {
 
    ${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin/aqua i -a
 
-   echo "All installations are complete."
+   echo 'All installations are complete.'
 }
 
 uninstall() {
@@ -23,7 +23,7 @@ uninstall() {
    bash scripts/rust-installer.sh uninstall
    bash scripts/aqua-installer.sh uninstall
 
-   echo "All uninstallations are complete."
+   echo 'All uninstallations are complete.'
 }
 
 usage() {

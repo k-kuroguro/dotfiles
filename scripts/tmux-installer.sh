@@ -23,7 +23,7 @@ install() {
       echo "Warning: tmux is already installed at ${existing_tmux}. (will install to ${TMUX_BIN} as well)" >&2
    fi
 
-   echo "Installing tmux AppImage..."
+   echo 'Installing tmux AppImage...'
    curl -s https://api.github.com/repos/kiyoon/tmux-appimage/releases/latest \
       | grep "browser_download_url.*appimage" \
       | cut -d : -f 2,3 \

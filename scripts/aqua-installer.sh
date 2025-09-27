@@ -19,7 +19,7 @@ install() {
       echo "Warning: aqua is already installed at ${existing_aqua}. (will install to ${AQUA_BIN} as well)" >&2
    fi
 
-   echo "Installing aqua..."
+   echo 'Installing aqua...'
    curl -sSfL -O https://raw.githubusercontent.com/aquaproj/aqua-installer/v4.0.2/aqua-installer
    echo "98b883756cdd0a6807a8c7623404bfc3bc169275ad9064dc23a6e24ad398f43d  aqua-installer" | sha256sum -c -
    chmod +x aqua-installer

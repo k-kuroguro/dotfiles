@@ -6,23 +6,23 @@ set -euo pipefail
 
 install() {
    if command -v deno &>/dev/null; then
-      echo "deno is already installed."
+      echo 'deno is already installed.'
       exit 0
    fi
 
-   echo "Installing deno..."
+   echo 'Installing deno...'
 
    curl -fsSL https://deno.land/x/install/install.sh | sh -s -- -y --no-modify-path
 
-   echo "deno installed."
+   echo 'deno installed.'
 }
 
 uninstall() {
    if command -v deno &>/dev/null; then
       rm -r ~/.deno
-      echo "deno uninstalled."
+      echo 'deno uninstalled.'
    else
-      echo "deno is not installed."
+      echo 'deno is not installed.'
    fi
 }
 
