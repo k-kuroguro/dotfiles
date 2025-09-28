@@ -6,7 +6,6 @@ registries:
 
 packages:
   - name: junegunn/fzf@v0.65.2
-  - name: junegunn/fzf/fzf-tmux@v0.65.2
 
   - name: cli/cli@v2.80.0 # gh
 

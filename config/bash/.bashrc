@@ -66,15 +66,13 @@ PS1="${LAST_COMMAND_STATUS}${CURRENT_TIME}${USERNAME}${HOSTNAME_IF_SSH}:${CURREN
 # (o_o)b 12:34:56 username@hostname:/path/to/dir (git:main*) (python:venv@3.8.10) (rustc:1.54.0)
 # $
 
-export FZF_DEFAULT_OPTS=$'--height 70% --reverse --ansi --bind \'ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-/:change-preview-window(80%|hidden|)\' --preview-border line --preview-window 50%,wrap'
+export FZF_DEFAULT_OPTS=$'--height 70% --tmux center,80% --reverse --ansi --bind \'ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-/:change-preview-window(80%|hidden|)\' --preview-border line --preview-window 50%,wrap'
 export FZF_CTRL_R_OPTS=$'--preview \'echo {} | bat --color=always --language=sh --style=plain\''
 export FZF_CTRL_T_OPTS=$'--preview \'bat --color=always --style=plain {}\''
 export FZF_ALT_C_OPTS=$'--preview \'eza -T -L=2 --color=always {}\''
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --color always'
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND='fd --type d --hidden --color always'
-export FZF_TMUX=1
-export FZF_TMUX_OPTS='-p 80%'
 
 _fzf_compgen_path() {
    fd --hidden --color always . "$1"
