@@ -15,7 +15,7 @@ main() {
    preview="echo {} | cut -d: -f1,2 | xargs tmux capture-pane -ep -t | tac | awk '/[^[:space:]]/ {p=1} p' | tac" # Get the pane content by removing the last empty lines
    selected=$(tmux list-windows -a -F "#{session_name}:#{window_index}:#{window_name}" |
       ${fzf_cmd} --exit-0 \
-         --preview "${preview}" \
+         --preview "bash -c \"${preview}\"" \
          --preview-window follow,nowrap \
    )
    if [[ $? != 0 || -z "${selected}" ]]; then

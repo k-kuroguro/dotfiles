@@ -39,7 +39,6 @@ list_windows() {
    wait
 }
 
-
 main() {
    local fzf_cmd
    if [[ "${FZF_TMUX}" == "1" ]]; then
@@ -49,24 +48,11 @@ main() {
    fi
 
    local preview
-   preview=$(cat <<- 'EOF'
-	host=$(echo {} | cut -f1)
-	info=$(echo {} | cut -f2)
-
-	session=$(echo "${info}" | cut -d: -f1)
-	index=$(echo "${info}" | cut -d: -f2)
-
-	if [[ "${host}" == 'local' ]]; then
-	   tmux capture-pane -ep -t "${session}:${index}" | tac | awk '/[^[:space:]]/ {p=1} p' | tac
-	else
-	   ssh -o ConnectTimeout=2 -o BatchMode=yes "${host}" "tmux capture-pane -ep -t '${session}:${index}'" 2>/dev/null | tac | awk '/[^[:space:]]/ {p=1} p' | tac
-	fi
-	EOF
-   )
+   preview="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/fzf-tmux-switcher-ssh.d/preview.sh"
 
    local selected
    selected=$(list_windows | ${fzf_cmd} --exit-0 \
-      --preview "${preview}" \
+      --preview "echo {} | bash ${preview}" \
       --preview-window follow,nowrap
    )
    if [[ $? != 0 || -z "${selected}" ]]; then
