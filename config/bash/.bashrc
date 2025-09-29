@@ -73,6 +73,7 @@ export FZF_ALT_C_OPTS=$'--preview \'eza -T -L=2 --color=always {}\''
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --color always'
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND='fd --type d --hidden --color always'
+export FZF_TMUX=0
 
 _fzf_compgen_path() {
    fd --hidden --color always . "$1"
