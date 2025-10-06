@@ -4,11 +4,13 @@ export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 export XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
 
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
-export ZRCDIR="${ZDOTDIR}/rc"
+export ZCACHEDIR="${XDG_CACHE_HOME}/zsh"
 
 export DOTFILES_DIR="${HOME}/dotfiles"
 
-setopt no_global_rcs           # Skip sourcing /etc/z* files except /etc/zshenv.
+mkdir -p "${ZCACHEDIR}"
+
+setopt no_global_rcs           # Skip sourcing `/etc/z*` files except `/etc/zshenv`.
 export skip_global_compinit=1  # Skip system-wide compinit.
 
 typeset -U path PATH
@@ -23,9 +25,8 @@ path=(
 )
 export PATH
 
-if [[ -f "${HOME}/.zshenv.local" ]]; then
-   source "${HOME}/.zshenv.local"
-fi
+export AQUA_GLOBAL_CONFIG="${XDG_CONFIG_HOME}/aqua/aqua.yaml" # Must be set before running any aqua-installed commands.
+
 if [[ -f "${ZDOTDIR}/.zshenv.local" ]]; then
    source "${ZDOTDIR}/.zshenv.local"
 fi
