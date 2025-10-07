@@ -1,0 +1,6 @@
+[flags]
+process_command = true
+hide_table_gap = true
+
+[processes]
+columns = ["cpu%", "mem%", "pid", "name", "user", "time"]

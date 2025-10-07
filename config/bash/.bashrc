@@ -46,6 +46,9 @@ command -v rg &>/dev/null && eval "$(rg --generate complete-bash)"
 command -v deno &>/dev/null && eval "$(deno completions bash)"
 command -v aqua &> /dev/null && eval "$(aqua completion bash)"
 command -v fzf &>/dev/null && eval "$(fzf --bash)"
+command -v fx &>/dev/null && source <(fx --comp bash)
+command -v miniserve &>/dev/null && source <(miniserve --print-completions bash)
+command -v watchexec &>/dev/null && source <(watchexec --completions bash)
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true

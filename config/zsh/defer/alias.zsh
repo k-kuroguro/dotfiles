@@ -1,5 +1,3 @@
-#!/bin/bash
-
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
@@ -41,7 +39,8 @@ alias path='echo -e ${PATH//:/\\n}'
 
 alias va='source .venv/bin/activate'
 
-alias bashrc='source ~/.bashrc'
+alias zshenv='source ~/.zshenv'
+alias zshrc='source ${ZDOTDIR}/.zshrc'
 
 alias untar='tar -xvf'
 alias untargz='tar -zxvf'
@@ -59,7 +58,6 @@ alias nowtime=$'date +\'%T\''
 alias now=$'date +\'%Y-%m-%d %T\''
 
 alias tm='tmux'
-complete -F _tmux tm
 
 alias fzf-tmux='fzf-tmux ${FZF_TMUX_OPTS}'
 alias fts='fzf-tmux-switcher'
@@ -72,10 +70,29 @@ alias fgb='fzf-git branch'
 alias shutdown='sudo shutdown -h now'
 
 alias bell=$'echo -e \'\a\''
-
 alias serve='miniserve'
-complete -F _miniserve serve
 
 alias btm='btm -b'
 alias top='btm'
 alias htop='btm'
+
+alias -s py='uv run'
+alias -s json='fx'
+
+function extract() {
+   case $1 in
+      *.tar.gz|*.tgz) tar xzvf "$1" ;;
+      *.tar.xz) tar Jxvf "$1" ;;
+      *.zip) unzip "$1" ;;
+      *.lzh) lha e "$1" ;;
+      *.tar.bz2|*.tbz) tar xjvf "$1" ;;
+      *.tar.Z) tar zxvf "$1" ;;
+      *.gz) gzip -d "$1" ;;
+      *.bz2) bzip2 -dc "$1" ;;
+      *.Z) uncompress "$1" ;;
+      *.tar) tar xvf "$1" ;;
+      *.arj) unarj "$1" ;;
+      *) echo "unknown format: $1" ;;
+   esac
+}
+alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract

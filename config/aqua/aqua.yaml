@@ -5,16 +5,18 @@ registries:
     ref: v4.417.0 # renovate: depName=aquaproj/aqua-registry
 
 packages:
+  - name: cli/cli@v2.80.0 # gh
   - name: junegunn/fzf@v0.65.2
   - name: junegunn/fzf/fzf-tmux@v0.65.2
-
-  - name: cli/cli@v2.80.0 # gh
-
   - name: BurntSushi/ripgrep@14.1.1
   - name: ajeetdsouza/zoxide@v0.9.8
   - name: eza-community/eza@v0.23.3
   - name: sharkdp/bat@v0.25.0
   - name: sharkdp/fd@v10.3.0
+  - name: antonmedv/fx@39.1.0
+  - name: svenstaro/miniserve@v0.32.0
+  - name: ClementTsang/bottom@0.11.1
+  - name: watchexec/watchexec@v2.3.2
 
   - name: astral-sh/uv@0.8.22
 
