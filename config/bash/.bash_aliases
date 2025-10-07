@@ -43,9 +43,6 @@ alias va='source .venv/bin/activate'
 
 alias bashrc='source ~/.bashrc'
 
-alias untar='tar -xvf'
-alias untargz='tar -zxvf'
-
 alias uvr='uv run'
 alias uvt='uv run task'
 

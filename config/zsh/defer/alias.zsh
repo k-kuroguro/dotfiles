@@ -42,9 +42,6 @@ alias va='source .venv/bin/activate'
 alias zshenv='source ~/.zshenv'
 alias zshrc='source ${ZDOTDIR}/.zshrc'
 
-alias untar='tar -xvf'
-alias untargz='tar -zxvf'
-
 alias uvr='uv run'
 alias uvt='uv run task'
 
