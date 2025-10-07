@@ -9,22 +9,26 @@ github = "romkatv/zsh-defer"
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit -d \"${ZCACHEDIR}/zcompdump-${ZSH_VERSION}\""
 
+[plugins.pure]
+github = "sindresorhus/pure"
+use = ["async.zsh", "pure.zsh"]
+
 [plugins.local-sync]
-inline = '''
+inline = """
 target_dir="${ZDOTDIR}/sync"
 if [[ -d "${target_dir}" ]]; then
    while IFS= read -r file; do
       source "${file}"
    done < <(find "${target_dir}" -type f -name "*.zsh" | sort)
 fi
-'''
+"""
 
 [plugins.local-defer]
-inline = '''
+inline = """
 target_dir="${ZDOTDIR}/defer"
 if [[ -d "${target_dir}" ]]; then
    while IFS= read -r file; do
       zsh-defer source "${file}"
    done < <(find "${target_dir}" -type f -name "*.zsh" | sort)
 fi
-'''
+"""

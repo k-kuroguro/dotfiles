@@ -5,13 +5,14 @@ export XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
 
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 export ZCACHEDIR="${XDG_CACHE_HOME}/zsh"
+export ZSTATEDIR="${XDG_STATE_HOME}/zsh"
 
 export DOTFILES_DIR="${HOME}/dotfiles"
 
-mkdir -p "${ZCACHEDIR}"
+mkdir -p "${ZCACHEDIR}" "${ZSTATEDIR}"
 
 setopt no_global_rcs           # Skip sourcing `/etc/z*` files except `/etc/zshenv`.
-export skip_global_compinit=1  # Skip system-wide compinit.
+export skip_global_compinit=1  # Skip system-wide compinit in `/etc/zshrc`.
 
 typeset -U path PATH
 path=(
