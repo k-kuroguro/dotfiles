@@ -27,7 +27,7 @@ alias mkdir='mkdir -p'
 
 alias eza='eza --group-directories-first --classify=always --color=auto'
 alias ls='eza'
-alias ll='eza -alF --icons=auto'
+alias ll='eza -alF --icons=auto --git'
 alias la='eza -a'
 alias sl='ls'
 
