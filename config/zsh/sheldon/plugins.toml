@@ -9,6 +9,10 @@ github = "romkatv/zsh-defer"
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit -d \"${ZCACHEDIR}/zcompdump-${ZSH_VERSION}\""
 
+[plugins.git-prompt]
+github = "woefe/git-prompt.zsh"
+hooks.post = "source \"${ZDOTDIR}/hooks/git-prompt_post.zsh\"" # Set prompt after loading git-prompt.
+
 [plugins.local-sync]
 inline = """
 target_dir="${ZDOTDIR}/sync"
