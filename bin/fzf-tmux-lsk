@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# List tmux key bindings via fzf
+# List tmux key bindings via fzf.
 
 main() {
    local fzf_cmd
    if [[ "${FZF_TMUX}" == "1" ]]; then
-      fzf_cmd="fzf-tmux ${FZF_TMUX_OPTS}" # fzf-tmux doesn't read $FZF_TMUX_OPTS automatically
+      fzf_cmd="fzf-tmux ${FZF_TMUX_OPTS}" # fzf-tmux doesn't read $FZF_TMUX_OPTS automatically.
    else
       fzf_cmd='fzf'
    fi

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Print 256-color palette with background and foreground samples.
+
+FG=$'\e[38;5;'
+BG=$'\e[48;5;'
+RS=$'\e[0m'
+
+color() {
+   local code="$1"
+   local number
+   number="$(printf '%3d' "$code")"
+
+   printf '%s%sm%s%s%s%sm%s%s ' "${BG}" "${code}" "${number}" "${RS}" "${FG}" "${code}" "${number}" "${RS}"
+}
+
+main() {
+   for n in {0..255}; do
+      color "${n}"
+      if (( (n + 1) % 16 == 0 )); then
+         printf '\n'
+      fi
+   done
+   printf '\n'
+}
+
+main "$@"

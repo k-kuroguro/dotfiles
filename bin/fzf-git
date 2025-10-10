@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Interactive utilities via fzf for git
+# Interactive utilities via fzf for git.
 
 readonly AVAILABLE_COMMANDS=('stash' 'branch')
 
 _get_fzf_cmd() {
    if [[ "${FZF_TMUX}" == "1" ]]; then
-      echo "fzf-tmux ${FZF_TMUX_OPTS}" # fzf-tmux doesn't read $FZF_TMUX_OPTS automatically
+      echo "fzf-tmux ${FZF_TMUX_OPTS}" # fzf-tmux doesn't read $FZF_TMUX_OPTS automatically.
    else
       echo 'fzf'
    fi

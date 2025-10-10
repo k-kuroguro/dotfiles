@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Switch tmux session/window using fzf
+# Switch tmux session/window using fzf.
 
 main() {
    local fzf_cmd
    if [[ "${FZF_TMUX}" == "1" ]]; then
-      fzf_cmd="fzf-tmux ${FZF_TMUX_OPTS}" # fzf-tmux doesn't read $FZF_TMUX_OPTS automatically
+      fzf_cmd="fzf-tmux ${FZF_TMUX_OPTS}" # fzf-tmux doesn't read $FZF_TMUX_OPTS automatically.
    else
       fzf_cmd='fzf'
    fi
 
    local preview
    local selected
-   preview="echo {} | cut -d: -f1,2 | xargs tmux capture-pane -ep -t | tac | awk '/[^[:space:]]/ {p=1} p' | tac" # Get the pane content by removing the last empty lines
+   preview="echo {} | cut -d: -f1,2 | xargs tmux capture-pane -ep -t | tac | awk '/[^[:space:]]/ {p=1} p' | tac" # Get the pane content by removing the last empty lines.
    selected=$(tmux list-windows -a -F "#{session_name}:#{window_index}:#{window_name}" |
       ${fzf_cmd} --exit-0 \
          --preview "bash -c \"${preview}\"" \
