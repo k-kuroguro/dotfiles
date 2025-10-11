@@ -15,7 +15,6 @@ apply = ["PATH", "fpath"]
 
 [plugins.git-prompt]
 github = "woefe/git-prompt.zsh"
-apply = ["defer"]
 
 [plugins.local-sync]
 inline = """
