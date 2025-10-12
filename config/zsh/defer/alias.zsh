@@ -45,6 +45,8 @@ alias zshrc='source ${ZDOTDIR}/.zshrc'
 alias uvr='uv run'
 alias uvt='uv run task'
 
+alias debugpy='uvx debugpy --wait-for-client --listen 5678'
+
 alias cls='clear'
 
 alias nsmi='nvidia-smi'
