@@ -5,3 +5,4 @@ command -v deno &>/dev/null && eval "$(deno completions zsh)"
 command -v fx &>/dev/null && source <(fx --comp zsh)
 command -v miniserve &>/dev/null && source <(miniserve --print-completions zsh)
 command -v watchexec &>/dev/null && source <(watchexec --completions zsh)
+command -v wezterm &>/dev/null && source <(wezterm shell-completion --shell zsh)

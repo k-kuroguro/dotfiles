@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# If not running interactively, don't do anything.
-[[ $- == *i* ]] || return
-
 DOTFILES_DIR="$(dirname "$(dirname "$(dirname "$(readlink -f "${BASH_SOURCE:-$0}")")")")"
 export DOTFILES_DIR
 
@@ -66,6 +63,7 @@ command -v fzf &>/dev/null && eval "$(fzf --bash)"
 command -v fx &>/dev/null && source <(fx --comp bash)
 command -v miniserve &>/dev/null && source <(miniserve --print-completions bash)
 command -v watchexec &>/dev/null && source <(watchexec --completions bash)
+command -v wezterm &>/dev/null && source <(wezterm shell-completion --shell bash)
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
