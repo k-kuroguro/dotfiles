@@ -18,7 +18,7 @@ _fzf_compgen_dir() {
 }
 
 _fzf_comprun() {
-   typeset command="$1"
+   local command="$1"
    shift
 
    case "${command}" in

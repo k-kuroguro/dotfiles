@@ -9,7 +9,7 @@ __prompt_command_timer_precmd() {
       local elapsed_ms=$(( __timer_end_ms - prompt_timer_start_ms ))
 
       if (( elapsed_ms > 0 )); then
-         prompt_elapsed_time=' [%F{3}'$'\Uf199f'" $(pretty_ms "${elapsed_ms}")%f]"
+         prompt_elapsed_time=" [%F{3}󱦟 $(pretty_ms "${elapsed_ms}")%f]"
       else
          prompt_elapsed_time=''
       fi
@@ -26,7 +26,7 @@ else
    prompt_host=''
 fi
 
-ZSH_THEME_GIT_PROMPT_PREFIX=$' [\Ue725 '
+ZSH_THEME_GIT_PROMPT_PREFIX=$' [ '
 ZSH_THEME_GIT_PROMPT_SUFFIX=']'
 ZSH_THEME_GIT_PROMPT_DETACHED="%{$fg[cyan]%}:"
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg[magenta]%}"
@@ -50,7 +50,32 @@ __prompt_git() {
    echo -n "${raw}"
 }
 
-PROMPT='%F{10}%n%f'"${prompt_host}"':%F{14}%~%f$(__prompt_git)${prompt_elapsed_time}'$'\n''❯ '
+__prompt_python() {
+   if [[ -n "${VIRTUAL_ENV:+x}" ]] && command -v python &>/dev/null; then
+      local env_name="$(echo "${VIRTUAL_ENV_PROMPT//[()]/}" | xargs)"
+      if [[ -z "${env_name}" ]]; then
+         env_name="$(basename "${VIRTUAL_ENV}")"
+      fi
+
+      echo -n " [󰌠 ${env_name}@$(python -V |& cut -d " " -f2)]"
+   fi
+}
+
+__prompt_rust() {
+   local dir="${PWD}"
+   while [[ "${dir}" != '/' ]]; do
+      if [[ -f "${dir}/Cargo.toml" ]]; then
+         if command -v rustc &>/dev/null; then
+            local ver="$(rustc -V | cut -d ' ' -f2)"
+            echo -n " [󱘗 ${ver}]"
+         fi
+         return
+      fi
+      dir="$(dirname "${dir}")"
+   done
+}
+
+PROMPT='%F{10}%n%f'"${prompt_host}"':%F{14}%~%f$(__prompt_git)$(__prompt_python)$(__prompt_rust)${prompt_elapsed_time}'$'\n''❯ '
 
 add-zsh-hook preexec __prompt_command_timer_preexec
 add-zsh-hook precmd __prompt_command_timer_precmd
