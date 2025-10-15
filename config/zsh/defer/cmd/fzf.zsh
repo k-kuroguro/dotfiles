@@ -1,4 +1,4 @@
-command -v fzf &>/dev/null && eval "$(fzf --zsh)"
+command -v fzf &>/dev/null && source <(fzf --zsh)
 
 export FZF_DEFAULT_OPTS=$'--height 70% --tmux center,80% --reverse --ansi --bind \'ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-/:change-preview-window(80%|hidden|)\' --preview-border line --preview-window 50%,wrap'
 export FZF_CTRL_R_OPTS=$'--preview \'echo {} | bat --color=always --language=sh --style=plain\''

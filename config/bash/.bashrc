@@ -53,17 +53,18 @@ fi
 
 [[ -f ~/.deno/env ]] && . ~/.deno/env
 
-command -v gh &>/dev/null && eval "$(gh completion -s bash)"
-command -v uv &>/dev/null && eval "$(uv generate-shell-completion bash)"
-command -v zoxide &>/dev/null && eval "$(zoxide init bash --no-cmd)"
-command -v rg &>/dev/null && eval "$(rg --generate complete-bash)"
-command -v deno &>/dev/null && eval "$(deno completions bash)"
-command -v aqua &> /dev/null && eval "$(aqua completion bash)"
-command -v fzf &>/dev/null && eval "$(fzf --bash)"
+command -v gh &>/dev/null && source <(gh completion -s bash)
+command -v uv &>/dev/null && source <(uv generate-shell-completion bash)
+command -v zoxide &>/dev/null && source <(zoxide init bash --no-cmd)
+command -v rg &>/dev/null && source <(rg --generate complete-bash)
+command -v deno &>/dev/null && source <(deno completions bash)
+command -v aqua &>/dev/null && source <(aqua completion bash)
+command -v fzf &>/dev/null && source <(fzf --bash)
 command -v fx &>/dev/null && source <(fx --comp bash)
 command -v miniserve &>/dev/null && source <(miniserve --print-completions bash)
 command -v watchexec &>/dev/null && source <(watchexec --completions bash)
 command -v wezterm &>/dev/null && source <(wezterm shell-completion --shell bash)
+command -v zellij &>/dev/null && source <(zellij setup --generate-completion bash)
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -124,6 +125,10 @@ if command -v __zoxide_zi >/dev/null 2>&1; then
       fi
    }
 fi
+
+export FX_SHOW_SIZE=true
+export FX_COLLAPSED=true
+export FX_INDENT=3
 
 bind -x '"\C-f":fzf-tmux-switcher-ssh'
 

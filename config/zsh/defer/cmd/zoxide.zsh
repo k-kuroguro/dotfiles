@@ -1,4 +1,4 @@
-command -v zoxide &>/dev/null && eval "$(zoxide init zsh --no-cmd)"
+command -v zoxide &>/dev/null && source <(zoxide init zsh --no-cmd)
 
 export _ZO_FZF_OPTS="${FZF_DEFAULT_OPTS}"" --preview \"echo {} | awk '{print \$2}' | xargs eza -T -L=2 --color=always\""
 

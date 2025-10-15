@@ -9,10 +9,6 @@ github = "romkatv/zsh-defer"
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit -d \"${ZCACHEDIR}/zcompdump-${ZSH_VERSION}\""
 
-[plugins.pretty-time]
-github = "sindresorhus/pretty-time-zsh"
-apply = ["PATH", "fpath"]
-
 [plugins.git-prompt]
 github = "woefe/git-prompt.zsh"
 
