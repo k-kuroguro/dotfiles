@@ -26,6 +26,14 @@ path=(
 )
 export PATH
 
+fpath=(
+	"${ZDOTDIR}/completions.local"(N-/)
+	'/usr/local/share/zsh/site-functions'(N-/)
+	'/usr/share/zsh/site-functions'(N-/)
+	"${(@)fpath}"
+)
+export FPATH
+
 export AQUA_GLOBAL_CONFIG="${XDG_CONFIG_HOME}/aqua/aqua.yaml" # Must be set before running any aqua-installed commands.
 
 if [[ -f "${ZDOTDIR}/.zshenv.local" ]]; then

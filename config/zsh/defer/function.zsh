@@ -1,12 +1,13 @@
 # Convert a duration given in milliseconds into a human-readable format.
+# Based on: https://github.com/sindresorhus/pretty-time-zsh.
 #
-# Input: integer milliseconds
-# Output: formatted duration string
-#    - < 1s → 'XXXms'
-#    - < 1m → 'X.Ys'  (milliseconds as fractional seconds)
-#    - ≥ 1m → 'Xm Ys' (milliseconds truncated)
-#
-# Based on: `https://github.com/sindresorhus/pretty-time-zsh`.
+# Arguments:
+#   Integer duration in milliseconds.
+# Outputs:
+#   Write the formatted duration string to stdout according to the rules below:
+#     - < 1s → 'XXXms'
+#     - < 1m → 'X.Ys'  (milliseconds as fractional seconds)
+#     - ≥ 1m → 'Xm Ys' (milliseconds truncated)
 pretty_ms() {
    if (( $# == 0 )); then
       echo "Usage: pretty_ms <milliseconds>" >&2

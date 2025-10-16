@@ -1,2 +1,5 @@
-.zshenv.local
-.zshrc.local
+/.zshenv.local
+/.zshrc.local
+
+/completions.local/**
+!/completions.local/.gitkeep
