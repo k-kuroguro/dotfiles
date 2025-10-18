@@ -19,6 +19,7 @@ packages:
   - name: watchexec/watchexec@v2.3.2
   - name: zellij-org/zellij@v0.43.1
   - name: sharkdp/hyperfine@v1.19.0
+  - name: ynqa/jnv@v0.6.1
 
   - name: astral-sh/uv@0.8.22
 
