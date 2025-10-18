@@ -30,6 +30,9 @@ ensure_completion 'bat --completion zsh' '_bat'
 ensure_completion 'rustup completions zsh' '_rustup'
 ensure_completion 'rustup completions zsh cargo' '_cargo'
 
+ensure_completion 'cmd_path=$(aqua which hyperfine 2>/dev/null) && cat "$(dirname "${cmd_path}")/autocomplete/_hyperfine"' '_hyperfine'
+ensure_completion 'cmd_path=$(aqua which btm 2>/dev/null) && cat "$(dirname "${cmd_path}")/completion/_btm"' '_btm'
+
 ensure_completion_from_url 'https://raw.githubusercontent.com/sharkdp/fd/refs/heads/master/contrib/completion/_fd' '_fd'
 ensure_completion_from_url 'https://raw.githubusercontent.com/ajeetdsouza/zoxide/refs/heads/main/contrib/completions/_zoxide' '_zoxide'
 ensure_completion_from_url 'https://raw.githubusercontent.com/eza-community/eza/refs/heads/main/completions/zsh/_eza' '_eza'
