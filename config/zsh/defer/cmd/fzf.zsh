@@ -27,24 +27,3 @@ _fzf_comprun() {
    esac
 }
 
-if ! command -v fzf-zellij &> /dev/null; then
-   curl -L https://raw.githubusercontent.com/k-kuroguro/fzf-zellij/refs/heads/main/bin/fzf-zellij -o ~/.local/bin/fzf-zellij
-   chmod +x ~/.local/bin/fzf-zellij
-fi
-
-if command -v fzf-zellij &>/dev/null; then
-   export FZF_ZELLIJ_WIDTH='70%'
-   export FZF_ZELLIJ_HEIGHT='70%'
-   export FZF_ZELLIJ_X='15%'
-   export FZF_ZELLIJ_Y='20%'
-   fzf() {
-      case "$1" in
-         --bash|--zsh|--fish|--version|-h|--help|--man)
-            command fzf "$@"
-            ;;
-         *)
-            fzf-zellij "$@"
-            ;;
-      esac
-   }
-fi
