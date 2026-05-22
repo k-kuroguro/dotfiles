@@ -1,0 +1,63 @@
+layout {
+   default_tab_template {
+      children
+      pane size=1 borderless=true {
+         plugin location="zjstatus" {
+            color_white  "#ffffff"
+            color_black  "#1e2030"
+            color_gray_1 "#3f3f3f"
+            color_gray_2 "#7a6c94"
+            color_cyan   "#8aadf4"
+
+            format_left   "{mode}"
+            format_center "{tabs}"
+            format_right  "#[fg=$white,bg=$gray_1] {session} "
+            format_space  ""
+
+            mode_locked       "#[fg=$black,bg=$cyan,bold] LOCKED "
+            mode_normal       "#[fg=$black,bg=$cyan,bold] NORMAL "
+            mode_resize       "#[fg=$black,bg=$cyan,bold] RESIZE "
+            mode_pane         "#[fg=$black,bg=$cyan,bold] PANE "
+            mode_move         "#[fg=$black,bg=$cyan,bold] MOVE "
+            mode_tab          "#[fg=$black,bg=$cyan,bold] TAB "
+            mode_scroll       "#[fg=$black,bg=$cyan,bold] SCROLL "
+            mode_search       "#[fg=$black,bg=$cyan,bold] SEARCH "
+            mode_enter_search "#[fg=$black,bg=$cyan,bold] ENTER SEARCH "
+            mode_rename_tab   "#[fg=$black,bg=$cyan,bold] RENAME TAB "
+            mode_rename_pane  "#[fg=$black,bg=$cyan,bold] RENAME PANE "
+            mode_session      "#[fg=$black,bg=$cyan,bold] SESSION "
+            mode_tmux         "#[fg=$black,bg=$cyan,bold] TMUX "
+
+            tab_active              "#[fg=$black,bg=$cyan,bold] {index} "
+            tab_active_fullscreen   "#[fg=$black,bg=$cyan,bold] {fullscreen_indicator} {index} "
+            tab_active_sync         "#[fg=$black,bg=$cyan,bold] {sync_indicator} {index} "
+
+            tab_normal              "#[fg=$gray_2,bold] {index} "
+            tab_normal_fullscreen   "#[fg=$gray_2,bold] {fullscreen_indicator} {index} "
+            tab_normal_sync         "#[fg=$gray_2,bold] {sync_indicator} {index} "
+
+            tab_separator " "
+
+            tab_sync_indicator       "󰓦"
+            tab_fullscreen_indicator "󰊓"
+
+            tab_rename              "#[fg=$black,bg=$cyan,bold] {index} {name} "
+
+            tab_display_count         "9"
+            tab_truncate_start_format "#[fg=$color]  +{count} 󰇘 "
+            tab_truncate_end_format   "#[fg=$color] 󰇘 +{count} "
+
+            format_hide_on_overlength "true"
+            format_precedence         "lrc"
+
+            hide_frame_for_single_pane "true"
+         }
+      }
+   }
+
+   swap_floating_layout{
+      floating_panes max_panes=1 {
+         pane x="15%" y="15%" width="70%" height="70%"
+      }
+   }
+}

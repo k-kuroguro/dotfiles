@@ -1,0 +1,38 @@
+[core]
+   editor = code --wait
+   pager = delta
+
+[user]
+   name = k-kuroguro
+   email = 68765710+k-kuroguro@users.noreply.github.com
+
+[init]
+   defaultBranch = main
+
+[commit]
+   gpgsign = true
+
+[tag]
+   gpgsign = true
+
+[interactive]
+   diffFilter = delta --color-only
+
+[delta]
+   navigate = true
+
+[credential "https://github.com"]
+	helper =
+   helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+   helper = !gh auth git-credential
+
+[alias]
+   cm = commit
+   co = checkout
+   cob = checkout -b
+   br = branch
+
+[include]
+   path = ~/.gitconfig.local

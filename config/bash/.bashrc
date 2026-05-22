@@ -1,7 +1,4 @@
-#!/bin/bash
-
-# If not running interactively, don't do anything.
-[[ $- == *i* ]] || return
+#!/usr/bin/env bash
 
 DOTFILES_DIR="$(dirname "$(dirname "$(dirname "$(readlink -f "${BASH_SOURCE:-$0}")")")")"
 export DOTFILES_DIR
@@ -26,6 +23,23 @@ export AQUA_REMOVE_MODE=pl
 export AQUA_DISABLE_LAZY_INSTALL=true
 export AQUA_PROGRESS_BAR=true
 
+function extract() {
+   case $1 in
+      *.tar.gz|*.tgz) tar xzvf "$1" ;;
+      *.tar.xz) tar Jxvf "$1" ;;
+      *.zip) unzip "$1" ;;
+      *.lzh) lha e "$1" ;;
+      *.tar.bz2|*.tbz) tar xjvf "$1" ;;
+      *.tar.Z) tar zxvf "$1" ;;
+      *.gz) gzip -d "$1" ;;
+      *.bz2) bzip2 -dc "$1" ;;
+      *.Z) uncompress "$1" ;;
+      *.tar) tar xvf "$1" ;;
+      *.arj) unarj "$1" ;;
+      *) echo "unknown format: $1" ;;
+   esac
+}
+
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
 [[ -f /etc/bash_completion ]] && . /etc/bash_completion
@@ -39,13 +53,19 @@ fi
 
 [[ -f ~/.deno/env ]] && . ~/.deno/env
 
-command -v gh &>/dev/null && eval "$(gh completion -s bash)"
-command -v uv &>/dev/null && eval "$(uv generate-shell-completion bash)"
-command -v zoxide &>/dev/null && eval "$(zoxide init bash --no-cmd)"
-command -v rg &>/dev/null && eval "$(rg --generate complete-bash)"
-command -v deno &>/dev/null && eval "$(deno completions bash)"
-command -v aqua &> /dev/null && eval "$(aqua completion bash)"
-command -v fzf &>/dev/null && eval "$(fzf --bash)"
+command -v gh &>/dev/null && source <(gh completion -s bash)
+command -v uv &>/dev/null && source <(uv generate-shell-completion bash)
+command -v zoxide &>/dev/null && source <(zoxide init bash --no-cmd)
+command -v rg &>/dev/null && source <(rg --generate complete-bash)
+command -v deno &>/dev/null && source <(deno completions bash)
+command -v aqua &>/dev/null && source <(aqua completion bash)
+command -v fx &>/dev/null && source <(fx --comp bash)
+command -v miniserve &>/dev/null && source <(miniserve --print-completions bash)
+command -v watchexec &>/dev/null && source <(watchexec --completions bash)
+command -v wezterm &>/dev/null && source <(wezterm shell-completion --shell bash)
+command -v zellij &>/dev/null && source <(zellij setup --generate-completion bash)
+command -v just &>/dev/null && source <(just --completions bash)
+type -p fzf &>/dev/null && source <(command fzf --bash)
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -62,11 +82,11 @@ GIT_BRANCH='$(command -v __git_ps1 &>/dev/null && __git_ps1 " (git:%s)" || :)'
 PYTHON_INFO='$(if [ "${VIRTUAL_ENV:+x}" ] && command -v python &>/dev/null; then ENV_NAME="$(echo ${VIRTUAL_ENV_PROMPT//[()]/} | xargs)"; [ -z "$ENV_NAME" ] && ENV_NAME="$(basename "$VIRTUAL_ENV")"; echo " (python:$ENV_NAME@$(python -V |& cut -d " " -f2))"; fi)'
 RUST_VERSION='$(if [ -f "Cargo.toml" ] && command -v rustc &>/dev/null; then echo " (rustc:$(rustc -V | cut -d " " -f2))"; fi)'
 
-PS1="${LAST_COMMAND_STATUS}${CURRENT_TIME}${USERNAME}${HOSTNAME_IF_SSH}:${CURRENT_DIR}${GIT_BRANCH}${PYTHON_INFO}${RUST_VERSION}\n$ "
+PS1="${LAST_COMMAND_STATUS}${CURRENT_TIME}${USERNAME}${HOSTNAME_IF_SSH}:${CURRENT_DIR}${GIT_BRANCH}${PYTHON_INFO}${RUST_VERSION}\n❯ "
 # (o_o)b 12:34:56 username@hostname:/path/to/dir (git:main*) (python:venv@3.8.10) (rustc:1.54.0)
-# $
+# ❯
 
-export FZF_DEFAULT_OPTS=$'--height 70% --tmux center,80% --reverse --ansi --bind \'ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-/:change-preview-window(80%|hidden|)\' --preview-border line --preview-window 50%,wrap'
+export FZF_DEFAULT_OPTS=$'--height 70% --tmux center,80%,border-native --reverse --ansi --bind \'ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-/:change-preview-window(80%|hidden|)\' --preview-border line --preview-window 50%,wrap'
 export FZF_CTRL_R_OPTS=$'--preview \'echo {} | bat --color=always --language=sh --style=plain\''
 export FZF_CTRL_T_OPTS=$'--preview \'bat --color=always --style=plain {}\''
 export FZF_ALT_C_OPTS=$'--preview \'eza -T -L=2 --color=always {}\''
@@ -94,6 +114,28 @@ _fzf_comprun() {
    esac
 }
 
+if ! command -v fzf-zellij &> /dev/null; then
+   curl -L https://raw.githubusercontent.com/k-kuroguro/fzf-zellij/refs/heads/main/bin/fzf-zellij -o ~/.local/bin/fzf-zellij
+   chmod +x ~/.local/bin/fzf-zellij
+fi
+
+if command -v fzf-zellij &>/dev/null; then
+   export FZF_ZELLIJ_WIDTH='70%'
+   export FZF_ZELLIJ_HEIGHT='70%'
+   export FZF_ZELLIJ_X='15%'
+   export FZF_ZELLIJ_Y='20%'
+   fzf() {
+      case "$1" in
+         --bash|--zsh|--fish|--version|-h|--help|--man)
+            command fzf "$@"
+            ;;
+         *)
+            fzf-zellij "$@"
+            ;;
+      esac
+   }
+fi
+
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 export _ZO_FZF_OPTS="${FZF_DEFAULT_OPTS}"" --preview \"echo {} | awk '{print \$2}' | xargs eza -T -L=2 --color=always\""
@@ -106,6 +148,10 @@ if command -v __zoxide_zi >/dev/null 2>&1; then
       fi
    }
 fi
+
+export FX_SHOW_SIZE=true
+export FX_COLLAPSED=true
+export FX_INDENT=3
 
 bind -x '"\C-f":fzf-tmux-switcher-ssh'
 

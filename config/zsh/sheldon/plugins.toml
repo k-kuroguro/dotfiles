@@ -1,0 +1,46 @@
+shell = "zsh"
+
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+PATH = "{{ hooks?.pre | nl }}export PATH=\"{{ dir }}:${PATH}\"\n{{ hooks?.post | nl }}"
+path = "{{ hooks?.pre | nl }}path=( \"{{ dir }}\" \"${(@)path}\" )\n{{ hooks?.post | nl }}"
+fpath = "{{ hooks?.pre | nl }}fpath=( \"{{ dir }}\" \"${(@)fpath}\" )\n{{ hooks?.post | nl }}"
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+[plugins.zsh-async]
+github = "mafredri/zsh-async"
+apply = ["fpath"]
+hooks.post = "autoload -Uz async.zsh && async.zsh"
+
+[plugins.git-prompt]
+github = "woefe/git-prompt.zsh"
+
+[plugins.local-sync]
+inline = """
+target_dir="${ZDOTDIR}/sync"
+if [[ -d "${target_dir}" ]]; then
+   while IFS= read -r file; do
+      source "${file}"
+   done < <(find "${target_dir}" -type f -name "*.zsh" | sort)
+fi
+"""
+
+[plugins.local-defer]
+inline = """
+target_dir="${ZDOTDIR}/defer"
+if [[ -d "${target_dir}" ]]; then
+   while IFS= read -r file; do
+      zsh-defer source "${file}"
+   done < <(find "${target_dir}" -type f -name "*.zsh" | sort)
+fi
+"""
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+apply = ["defer"]
+
+[plugins.fast-syntax-highlighting]
+github = "zdharma-continuum/fast-syntax-highlighting"
+apply = ["defer"]
