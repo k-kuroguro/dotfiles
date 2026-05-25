@@ -25,6 +25,5 @@ __ensure_plugin() {
 
 __ensure_plugin 'https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm'
 __ensure_plugin 'https://github.com/cristiand391/zj-quit/releases/latest/download/zj-quit.wasm'
-__ensure_plugin 'https://github.com/k-kuroguro/zellij-listfmt/releases/latest/download/zellij-listfmt.wasm'
 
 unset -f __ensure_plugin

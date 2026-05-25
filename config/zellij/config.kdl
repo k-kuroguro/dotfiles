@@ -11,11 +11,6 @@ plugins {
 
    zj-quit location="file:~/.local/share/zellij/plugins/zj-quit.wasm"
    zjstatus location="file:~/.local/share/zellij/plugins/zjstatus.wasm"
-   zellij-listfmt location="file:~/.local/share/zellij/plugins/zellij-listfmt.wasm"
-}
-
-load_plugins {
-   zellij-listfmt
 }
 
 keybinds clear-defaults=true {
