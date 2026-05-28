@@ -1,7 +1,6 @@
 import {
    type Action,
    ActionStatus,
-   download,
    getRevertActions,
    symlink
 } from 'https://raw.githubusercontent.com/k-kuroguro/dotdep/master/src/mod.ts';
@@ -89,8 +88,6 @@ const parseCommand = (args: string[]): { command?: 'deploy' | 'undeploy'; dryRun
 };
 
 const actions: Action[] = [
-   symlink({ src: './config/bash/.bashrc', dest: '~/.bashrc', overwrite: true }),
-   symlink({ src: './config/bash/.bash_aliases', dest: '~/.bash_aliases', overwrite: true }),
    symlink({ src: './config/git', dest: '~/.config/git', overwrite: true }),
    symlink({ src: './config/alacritty', dest: '~/.config/alacritty', overwrite: true }),
    symlink({ src: './config/fd', dest: '~/.config/fd', overwrite: true }),
@@ -108,11 +105,6 @@ const actions: Action[] = [
    symlink({ src: './config/lazygit', dest: '~/.config/lazygit', overwrite: true }),
    symlink({ src: './config/direnv', dest: '~/.config/direnv', overwrite: true }),
    symlink({ src: './config/cargo/config.toml', dest: '~/.cargo/config.toml', overwrite: true }),
-   download({
-      url: 'https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh',
-      dest: '~/.bash-preexec.sh',
-      timestamping: true,
-   }),
 ];
 
 if (import.meta.main) {
