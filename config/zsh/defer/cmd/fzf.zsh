@@ -1,6 +1,6 @@
 type -p fzf &>/dev/null && source <(command fzf --zsh)
 
-export FZF_DEFAULT_OPTS=$'--height 70% --tmux center,80%,border-native --reverse --ansi --bind \'ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-/:change-preview-window(80%|hidden|)\' --preview-border line --preview-window 50%,wrap'
+export FZF_DEFAULT_OPTS=$'--height 70% --popup center,80%,border-native --reverse --ansi --bind \'ctrl-s:preview-half-page-down,ctrl-w:preview-half-page-up,ctrl-/:change-preview-window(80%|hidden|)\' --preview-border line --preview-window 50%,wrap'
 export FZF_CTRL_R_OPTS=$'--preview \'echo {} | bat --color=always --language=sh --style=plain\''
 export FZF_CTRL_T_OPTS=$'--preview \'bat --color=always --style=plain {}\''
 export FZF_ALT_C_OPTS=$'--preview \'eza -T -L=2 --color=always {}\''

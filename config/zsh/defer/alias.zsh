@@ -68,12 +68,6 @@ alias nowdate=$'date +\'%Y-%m-%d\''
 alias nowtime=$'date +\'%T\''
 alias now=$'date +\'%Y-%m-%d %T\''
 
-alias tm='tmux'
-
-alias fzf-tmux='fzf-tmux ${FZF_TMUX_OPTS}'
-alias fts='fzf-tmux-switcher'
-alias ftss='fzf-tmux-switcher-ssh'
-
 alias shutdown='sudo shutdown -h now'
 
 alias bell=$'echo -e \'\a\''

@@ -1,10 +1,9 @@
 import {
    type Action,
    ActionStatus,
-   command,
    download,
    getRevertActions,
-   symlink,
+   symlink
 } from 'https://raw.githubusercontent.com/k-kuroguro/dotdep/master/src/mod.ts';
 
 import { parseArgs } from 'jsr:@std/cli@1.0.22/parse-args';
@@ -94,7 +93,6 @@ const actions: Action[] = [
    symlink({ src: './config/bash/.bash_aliases', dest: '~/.bash_aliases', overwrite: true }),
    symlink({ src: './config/git', dest: '~/.config/git', overwrite: true }),
    symlink({ src: './config/alacritty', dest: '~/.config/alacritty', overwrite: true }),
-   symlink({ src: './config/tmux/.tmux.conf', dest: '~/.tmux.conf', overwrite: true }),
    symlink({ src: './config/fd', dest: '~/.config/fd', overwrite: true }),
    symlink({ src: './config/bat', dest: '~/.config/bat', overwrite: true }),
    symlink({ src: './config/clang-format/.clang-format', dest: '~/.clang-format', overwrite: true }),
@@ -110,18 +108,11 @@ const actions: Action[] = [
    symlink({ src: './config/lazygit', dest: '~/.config/lazygit', overwrite: true }),
    symlink({ src: './config/direnv', dest: '~/.config/direnv', overwrite: true }),
    symlink({ src: './config/cargo/config.toml', dest: '~/.cargo/config.toml', overwrite: true }),
-   symlink({ src: './tpm', dest: '~/.tmux/plugins/tpm', overwrite: true }),
-   download({
-      url: 'https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux',
-      dest: '~/.bash_completion.d/tmux',
-      timestamping: true,
-   }),
    download({
       url: 'https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh',
       dest: '~/.bash-preexec.sh',
       timestamping: true,
    }),
-   command({ command: ['~/.tmux/plugins/tpm/bin/install_plugins'] }), // Install tmux plugins
 ];
 
 if (import.meta.main) {

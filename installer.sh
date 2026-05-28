@@ -5,7 +5,6 @@ set -euo pipefail
 install() {
    bash scripts/aqua-installer.sh install
    bash scripts/rust-installer.sh install
-   bash scripts/tmux-installer.sh install
    bash scripts/deno-installer.sh install
 
    ~/.deno/bin/deno run -A --no-lock dotfiles.ts deploy
@@ -19,7 +18,6 @@ uninstall() {
    deno run -A --no-lock dotfiles.ts undeploy
 
    bash scripts/deno-installer.sh uninstall
-   bash scripts/tmux-installer.sh uninstall
    bash scripts/rust-installer.sh uninstall
    bash scripts/aqua-installer.sh uninstall
 
