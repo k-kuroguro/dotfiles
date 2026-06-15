@@ -27,14 +27,14 @@ TERM = "xterm-256color"
 size = 11.5
 
 [font.normal]
-family = "HackGen Console NF"
+family = "Moralerspace Argon HW"
 style = "Regular"
 [font.bold]
-family = "HackGen Console NF"
+family = "Moralerspace Argon HW"
 style = "Bold"
 [font.italic]
-family = "HackGen Console NF"
+family = "Moralerspace Argon HW"
 style = "Italic"
 [font.bold_italic]
-family = "HackGen Console NF"
+family = "Moralerspace Argon HW"
 style = "Bold Italic"

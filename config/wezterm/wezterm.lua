@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "Vs Code Dark+ (Gogh)"
 
-config.font = wezterm.font("HackGen Console NF")
+config.font = wezterm.font("Moralerspace Argon HW")
 config.font_size = 11
 
 config.animation_fps = 1
