@@ -1,0 +1,30 @@
+local M = {}
+
+local function get_icon(filename, filetype)
+   if filetype == "toggleterm" then
+      return { " ", group = "MiniIconsGreen" }
+   else
+      local devicons = require("nvim-web-devicons")
+      local ft_icon, ft_color = devicons.get_icon_color(filename)
+      if ft_icon then
+         return { ft_icon .. " ", guifg = ft_color, guibg = "none" }
+      else
+         return {}
+      end
+   end
+end
+
+function M.render(props)
+   local name = require("utils").bufname(props.buf)
+   local filetype = vim.bo[props.buf].filetype
+   local icon = get_icon(name, filetype)
+
+   return {
+      " ",
+      icon,
+      { name .. (vim.bo[props.buf].modified and "* " or " ") },
+      { " " .. vim.api.nvim_win_get_number(props.win) - 1 .. " ", group = "InclineWinnr" },
+   }
+end
+
+return M

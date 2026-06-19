@@ -104,6 +104,7 @@ const actions: Action[] = [
    symlink({ src: './config/zellij', dest: '~/.config/zellij', overwrite: true }),
    symlink({ src: './config/lazygit', dest: '~/.config/lazygit', overwrite: true }),
    symlink({ src: './config/direnv', dest: '~/.config/direnv', overwrite: true }),
+   symlink({ src: './config/nvim', dest: '~/.config/nvim', overwrite: true }),
    symlink({ src: './config/cargo/config.toml', dest: '~/.cargo/config.toml', overwrite: true }),
 ];
 

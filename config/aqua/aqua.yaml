@@ -22,10 +22,12 @@ packages:
   - name: junegunn/fzf@v0.72.0
   - name: mikefarah/yq@v4.53.2
   - name: mozilla/sccache@v0.15.0
+  - name: neovim/neovim@v0.12.2
   - name: Nukesor/pueue/pueue@v4.0.4
   - name: Nukesor/pueue/pueued@v4.0.4
   - name: Orange-OpenSource/hurl@8.0.1
   - name: orhun/git-cliff@v2.13.1
+  - name: rhysd/vim-startuptime@v1.3.2
   - name: rossmacarthur/sheldon@0.8.5
   - name: rui314/mold@v2.41.0
   - name: sharkdp/bat@v0.26.1
@@ -34,6 +36,7 @@ packages:
   - name: suzuki-shunsuke/pinact@v3.10.1
   - name: svenstaro/miniserve@v0.35.0
   - name: sxyazi/yazi@v26.5.6
+  - name: tree-sitter/tree-sitter@v0.26.9
   - name: twistedpair/google-cloud-sdk@562.0.0
   - name: watchexec/watchexec@v2.5.1
   - name: zellij-org/zellij@v0.44.3
