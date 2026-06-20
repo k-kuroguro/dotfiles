@@ -78,9 +78,7 @@ return {
          },
       },
    },
-   sources = {
-      terminals = require("modules.snacks.picker.terminals"),
-   },
+   sources = {},
    actions = {
       load_session = function(picker, item)
          picker:close()

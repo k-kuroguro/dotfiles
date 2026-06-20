@@ -3,7 +3,7 @@ local M = {}
 function M.buf_filter(bufnr)
    local bo = vim.bo[bufnr]
 
-   if bo.buftype == "help" then return true end
+   if bo.buftype == "help" or bo.buftype == "terminal" then return true end
    if bo.buftype ~= "" and bo.buftype ~= "acwrite" then return false end
    if vim.api.nvim_buf_get_name(bufnr) == "" then return false end
 

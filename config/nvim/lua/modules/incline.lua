@@ -1,7 +1,7 @@
 local M = {}
 
-local function get_icon(filename, filetype)
-   if filetype == "toggleterm" then
+local function get_icon(filename, buftype)
+   if buftype == "terminal" then
       return { " ", group = "MiniIconsGreen" }
    else
       local devicons = require("nvim-web-devicons")
@@ -16,8 +16,8 @@ end
 
 function M.render(props)
    local name = require("utils").bufname(props.buf)
-   local filetype = vim.bo[props.buf].filetype
-   local icon = get_icon(name, filetype)
+   local buftype = vim.bo[props.buf].buftype
+   local icon = get_icon(name, buftype)
 
    return {
       " ",

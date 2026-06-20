@@ -5,13 +5,10 @@ function M.bufname(buf)
 
    if bufname == "" then return "[No Name]" end
 
-   local filetype = vim.bo[buf].filetype
-   if filetype == "toggleterm" then
-      local term_id = bufname:match("term://.*toggleterm#(%d+)$")
-      if term_id then
-         local term = require("toggleterm.terminal").get(tonumber(term_id), false)
-         if term and term.display_name then return term.display_name end
-      end
+   local buftype = vim.bo[buf].buftype
+   if buftype == "terminal" then
+      local index, _ = require("modules.terminal").get_term_by_bufnr(buf)
+      if index then return "Term" .. index end
    end
 
    return vim.fn.fnamemodify(bufname, ":~:.")

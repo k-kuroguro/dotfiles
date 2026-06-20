@@ -24,6 +24,7 @@ return {
             {
                "<leader>t",
                group = "terminals",
+               expand = function() return require("modules.which-key").expand_term() end,
             },
             {
                "<leader>q",
@@ -37,7 +38,7 @@ return {
             {
                "<leader>b",
                group = "buffers",
-               expand = function() return require("which-key.extras").expand.buf() end,
+               expand = function() return require("modules.which-key").expand_buf() end,
             },
          },
       },
@@ -55,7 +56,7 @@ return {
             { pattern = "buffer", icon = "󰈔 ", color = "cyan" },
             { pattern = "key", icon = "󰌌 ", color = "azure" },
             { pattern = "highlight", icon = " ", color = "cyan" },
-            { pattern = "terminal", icon = " ", color = "green" },
+            { pattern = "term", icon = " ", color = "green" },
             { pattern = "command", icon = " ", color = "green" },
             { pattern = "project", icon = "󰝰 ", color = "cyan" },
          },

@@ -33,8 +33,6 @@ return {
 
             WhichKeyNormal = { bg = "palette.bg3" },
 
-            ToggleTermFloatBorder = { fg = "palette.bg0", bg = "palette.bg0" },
-
             TreesitterContext = { bg = "palette.bg3" },
 
             --  User-defined groups for incline.nvim
