@@ -59,16 +59,16 @@ function M.expand_term()
    local ret = {}
 
    for i, term in ipairs(require("terminal.active_terminals"):get_sorted_terminals()) do
-      if i > 9 then break end
+      if i > 10 then break end
 
-      local name = "Term" .. i
       ret[#ret + 1] = {
-         tostring(i),
+         tostring(i - 1),
          function()
             term:open(require("modules.terminal").get_layout())
             vim.cmd("startinsert")
          end,
-         desc = name,
+         desc = vim.b[term.bufnr].term_title,
+         icon = { icon = " ", color = "green" },
       }
    end
 

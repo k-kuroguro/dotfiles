@@ -28,7 +28,7 @@ function M.get_layout()
    local win = get_bottom_right_terminal_win()
 
    if not win then
-      local height = math.floor(vim.o.lines * 0.33)
+      local height = math.floor(vim.o.lines * 0.4)
       return { open_cmd = "botright " .. height .. "new" }
    else
       return { open_cmd = "vertical rightbelow new" }
