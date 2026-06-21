@@ -90,7 +90,7 @@ return {
          local has_session = require("modules.resession").has_session(dir)
          if has_session then
             require("resession").load(dir, { dir = require("modules.resession").dirsession })
-         elseif pick then
+         else
             Snacks.dashboard.pick()
          end
       end,
