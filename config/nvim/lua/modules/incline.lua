@@ -23,7 +23,7 @@ function M.render(props)
       " ",
       icon,
       { name .. (vim.bo[props.buf].modified and "* " or " ") },
-      { " " .. vim.api.nvim_win_get_number(props.win) - 1 .. " ", group = "InclineWinnr" },
+      { " " .. vim.api.nvim_win_get_number(props.win) - 1 .. " ", group = "InclineWinnr" }, -- TODO: Change the color because Treesitter Context has the same color as this.
    }
 end
 
