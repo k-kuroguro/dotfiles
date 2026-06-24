@@ -14,18 +14,10 @@ return {
       vim.diagnostic.config({
          update_in_insert = true,
          severity_sort = true,
+         underline = true,
          virtual_text = {
             format = function(diagnostic)
                return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
-            end,
-            prefix = function(diagnostic)
-               local icons = {
-                  [vim.diagnostic.severity.ERROR] = "  ",
-                  [vim.diagnostic.severity.WARN] = "  ",
-                  [vim.diagnostic.severity.INFO] = "  ",
-                  [vim.diagnostic.severity.HINT] = "  ",
-               }
-               return icons[diagnostic.severity]
             end,
          },
          signs = {
