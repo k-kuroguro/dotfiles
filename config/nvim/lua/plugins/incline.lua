@@ -22,16 +22,30 @@ return {
       },
    },
    config = function(_, opts)
+      require("incline").setup(opts)
+
       vim.api.nvim_create_autocmd("TermRequest", {
          desc = "Refresh incline when terminal title changes",
          callback = function(ev)
-            if ev.data.sequence:match("^\027%]2;") then
-               local ok, incline = pcall(require, "incline")
-               if ok then incline.refresh() end
-            end
+            if ev.data.sequence:match("^\027%]2;") then require("incline").refresh() end
          end,
       })
 
-      require("incline").setup(opts)
+      vim.api.nvim_create_autocmd("OptionSet", {
+         pattern = "winbar",
+         callback = function() require("incline").refresh() end,
+      })
+
+      Snacks.toggle({
+         name = "Incline",
+         get = function() return require("incline").is_enabled() end,
+         set = function(state)
+            if state then
+               require("incline").enable()
+            else
+               require("incline").disable()
+            end
+         end,
+      }):map("<leader>ui")
    end,
 }

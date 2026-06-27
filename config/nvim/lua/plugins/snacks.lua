@@ -6,12 +6,19 @@ return {
       dashboard = require("modules.snacks.dashboard"),
       notifier = require("modules.snacks.notifier"),
       picker = require("modules.snacks.picker"),
+      toggle = {
+         icon = {
+            enabled = "󱨥 ",
+            disabled = "󱨦 ",
+         },
+      },
       styles = {
          notification = {
             border = "single",
          },
       },
    },
+   config = function(_, opts) require("snacks").setup(opts) end,
    keys = {
       { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
       { "<leader>ff", function() Snacks.picker.files() end, desc = "Files" },

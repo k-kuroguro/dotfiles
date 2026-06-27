@@ -37,6 +37,10 @@ return {
 
             --  User-defined groups for incline.nvim
             InclineWinnr = { fg = "palette.cyan", bg = "palette.bg3" },
+
+            WinpickMarker = { bg = "palette.blue", fg = "palette.bg1" },
+            WinpickMarkerFocused = { bg = "palette.red", fg = "palette.bg1" },
+            FylerWinpickMarker = { link = "WinpickMarker" },
          },
       },
    },

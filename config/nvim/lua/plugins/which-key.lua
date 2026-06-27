@@ -32,8 +32,8 @@ return {
             },
             {
                "<leader>w",
+               proxy = "<c-w>",
                group = "windows",
-               expand = function() return require("modules.which-key").expand_winnr() end,
             },
             {
                "<leader>b",
@@ -44,6 +44,7 @@ return {
       },
       icons = {
          rules = {
+            { pattern = "fyler", icon = "󰙅 ", color = "azure" },
             { pattern = "grep", icon = " ", color = "red" },
             { pattern = "find", icon = " ", color = "cyan" },
             { pattern = "search", icon = " ", color = "cyan" },

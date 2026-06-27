@@ -15,6 +15,8 @@ local function get_icon(filename, buftype)
 end
 
 function M.render(props)
+   if vim.api.nvim_win_call(props.win, function() return vim.wo.winbar ~= "" end) then return nil end
+
    local name = require("utils").bufname(props.buf)
    local buftype = vim.bo[props.buf].buftype
    local icon = get_icon(name, buftype)
@@ -23,7 +25,6 @@ function M.render(props)
       " ",
       icon,
       { name .. (vim.bo[props.buf].modified and "* " or " ") },
-      { " " .. vim.api.nvim_win_get_number(props.win) - 1 .. " ", group = "InclineWinnr" }, -- TODO: Change the color because Treesitter Context has the same color as this.
    }
 end
 
