@@ -17,6 +17,7 @@ return {
             "netrwSettings",
             "netrwFileHandlers",
             "matchit",
+            "matchparen",
             "tar",
             "tarPlugin",
             "rrhelper",

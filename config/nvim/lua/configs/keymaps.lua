@@ -9,4 +9,4 @@ vim.keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>", { noremap = true, silent = tru
 vim.keymap.set("n", "<C-k>", "<Cmd>wincmd k<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-l>", "<Cmd>wincmd l<CR>", { noremap = true, silent = true })
 
-vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<Cmd>w<CR><ESC>", { desc = "Save File" })

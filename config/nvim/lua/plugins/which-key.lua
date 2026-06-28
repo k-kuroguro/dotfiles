@@ -44,7 +44,6 @@ return {
       },
       icons = {
          rules = {
-            { pattern = "fyler", icon = "󰙅 ", color = "azure" },
             { pattern = "grep", icon = " ", color = "red" },
             { pattern = "find", icon = " ", color = "cyan" },
             { pattern = "search", icon = " ", color = "cyan" },
@@ -60,6 +59,9 @@ return {
             { pattern = "term", icon = " ", color = "green" },
             { pattern = "command", icon = " ", color = "green" },
             { pattern = "project", icon = "󰝰 ", color = "cyan" },
+            { pattern = "project", icon = "󰝰 ", color = "cyan" },
+            { plugin = "neural-open.nvim", icon = " ", color = "cyan" },
+            { plugin = "fyler.nvim", icon = "󰙅 ", color = "azure" },
          },
          keys = {
             BS = " ",
