@@ -1,7 +1,11 @@
 {
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
+  "denops-lazy.nvim": { "branch": "main", "commit": "6e45635cb65d083f5c0787abf45eeda864f6747c" },
+  "denops.vim": { "branch": "main", "commit": "e82c5a94ca1154b05c9d74d6f6f58c9991b1424f" },
   "fyler.nvim": { "branch": "main", "commit": "3dd25cb6103f88ce5a4300a382c389eeae7a0fdb" },
+  "gin.vim": { "branch": "main", "commit": "3d53775cb96f9be124486ec9ed38861b6fdaa802" },
   "gitsigns.nvim": { "branch": "main", "commit": "2038c666bd9d8a0b7349a0b6ee00dc83104b9ecf" },
+  "hardtime.nvim": { "branch": "main", "commit": "b4e431934af1fe224a3a801f632c008278cb7628" },
   "incline.nvim": { "branch": "main", "commit": "debd628e9395f7a9da57bdc31ce75ca6b40a880b" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "50bf3871b539896bd0650b882f6e6b467cc1c1eb" },

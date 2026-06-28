@@ -2,25 +2,25 @@ local ellipsis = "…"
 local ellipsis_width = vim.fn.strdisplaywidth(ellipsis)
 
 local function truncate(line, text_width, icon_width)
-   if vim.fn.strchars(line) <= text_width then return line .. string.rep(" ", icon_width - 1) end
+   if vim.fn.strdisplaywidth(line) <= text_width then return line .. (" "):rep(icon_width) end
 
-   local ret = vim.fn.strcharpart(line, 0, math.max(0, text_width - ellipsis_width))
+   local ret = line
 
-   while ret ~= "" and vim.fn.strdisplaywidth(ret .. ellipsis) > text_width do
+   while ret ~= "" and vim.fn.strdisplaywidth(ret) + ellipsis_width > text_width do
       ret = vim.fn.strcharpart(ret, 0, vim.fn.strchars(ret) - 1)
    end
 
-   return ret .. ellipsis .. string.rep(" ", icon_width - 1)
+   return ret .. ellipsis .. (" "):rep(icon_width)
 end
 
 return {
    enabled = true,
    icons = {
-      error = "   ",
-      warn = "   ",
-      info = "   ",
-      debug = "   ",
-      trace = "   ",
+      error = "  ",
+      warn = "  ",
+      info = "  ",
+      debug = "  ",
+      trace = "  ",
    },
    style = function(buf, notif, ctx)
       ctx.opts.border = "none"
