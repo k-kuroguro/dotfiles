@@ -6,7 +6,7 @@ return {
    },
    opts = {
       hooks = {
-         n_rename = function(src_path, dest_path) Snacks.rename.on_rename_file(src_path, dest_path) end,
+         on_rename = function(src_path, dest_path) Snacks.rename.on_rename_file(src_path, dest_path) end,
       },
       extensions = {
          git = { enabled = true },
