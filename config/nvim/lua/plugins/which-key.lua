@@ -59,7 +59,7 @@ return {
             { pattern = "term", icon = " ", color = "green" },
             { pattern = "command", icon = " ", color = "green" },
             { pattern = "project", icon = "󰝰 ", color = "cyan" },
-            { pattern = "project", icon = "󰝰 ", color = "cyan" },
+            { pattern = "register", icon = "󰅇 ", color = "azure" },
             { plugin = "neural-open.nvim", icon = " ", color = "cyan" },
             { plugin = "fyler.nvim", icon = "󰙅 ", color = "azure" },
          },

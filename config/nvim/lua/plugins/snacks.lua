@@ -26,6 +26,7 @@ return {
          { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
          { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
 
+         { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
          { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
          { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
          { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
