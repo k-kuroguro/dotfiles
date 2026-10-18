@@ -1,0 +1,22 @@
+BasedOnStyle: LLVM
+
+UseTab: Never
+IndentWidth: 3
+
+AllowShortBlocksOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: All
+
+ContinuationIndentWidth: 3
+
+AlwaysBreakTemplateDeclarations: No
+
+BreakBeforeBraces: Attach
+
+IndentCaseLabels: true
+
+ColumnLimit: 0
+
+AccessModifierOffset: 0
+
+NamespaceIndentation: All

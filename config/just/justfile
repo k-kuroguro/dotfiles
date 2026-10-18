@@ -1,0 +1,17 @@
+_default:
+  @just -gl
+
+deploy-dotfiles:
+  cd ~/dotfiles && deno run -A --no-lock dotfiles.ts deploy
+
+update-dotfiles:
+  cd ~/dotfiles && git pull
+
+[metadata("export PROMPT_GCLOUD_ENABLED=1")]
+switch-gcloud-configuration:
+  gcloud config configurations list \
+    | awk '{ print $1,$3,$4 }' \
+    | column -t \
+    | fzf --header-lines=1 \
+    | awk '{ print $1 }' \
+    | xargs -r gcloud config configurations activate
