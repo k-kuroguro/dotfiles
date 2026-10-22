@@ -25,6 +25,9 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldmethod = "expr"
 vim.opt.foldlevel = 99
 
+vim.opt.title = true
+vim.opt.titlestring = "nvim"
+
 vim.diagnostic.config({
    update_in_insert = true,
    severity_sort = true,
