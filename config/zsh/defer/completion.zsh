@@ -39,8 +39,8 @@ __ensure_completion 'uvx' 'uvx --generate-shell-completion zsh' '_uvx'
 __ensure_completion 'watchexec' 'watchexec --completions zsh' '_watchexec'
 __ensure_completion 'yq' 'yq shell-completion zsh' '_yq'
 
-__ensure_completion 'btm' 'cmd_path=$(aqua which btm 2>/dev/null) && cat "$(dirname "${cmd_path}")/completion/_btm"' '_btm'
-__ensure_completion 'hyperfine' 'cmd_path=$(aqua which hyperfine 2>/dev/null) && cat "$(dirname "${cmd_path}")/autocomplete/_hyperfine"' '_hyperfine'
+__ensure_completion 'btm' 'cmd_path=$(mise which btm 2>/dev/null) && cat "${cmd_path:h:h}/completion/_btm"' '_btm'
+__ensure_completion 'hyperfine' 'cmd_path=$(mise which hyperfine 2>/dev/null) && cat "${cmd_path:h:h}/autocomplete/_hyperfine"' '_hyperfine'
 
 __ensure_completion_from_url 'eza' 'https://raw.githubusercontent.com/eza-community/eza/refs/heads/main/completions/zsh/_eza' '_eza'
 __ensure_completion_from_url 'fd' 'https://raw.githubusercontent.com/sharkdp/fd/refs/heads/master/contrib/completion/_fd' '_fd'
