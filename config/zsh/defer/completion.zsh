@@ -38,6 +38,7 @@ __ensure_completion 'uv' 'uv generate-shell-completion zsh' '_uv'
 __ensure_completion 'uvx' 'uvx --generate-shell-completion zsh' '_uvx'
 __ensure_completion 'watchexec' 'watchexec --completions zsh' '_watchexec'
 __ensure_completion 'yq' 'yq shell-completion zsh' '_yq'
+__ensure_completion 'tuios' 'tuios completion zsh' '_tuios'
 
 __ensure_completion 'btm' 'cmd_path=$(mise which btm 2>/dev/null) && cat "${cmd_path:h:h}/completion/_btm"' '_btm'
 __ensure_completion 'hyperfine' 'cmd_path=$(mise which hyperfine 2>/dev/null) && cat "${cmd_path:h:h}/autocomplete/_hyperfine"' '_hyperfine'

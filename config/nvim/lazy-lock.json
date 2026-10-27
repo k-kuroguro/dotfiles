@@ -14,7 +14,6 @@
   "mason-lspconfig.nvim": { "branch": "main", "commit": "9d28935aa95fa6c1dc7c4d6747f101a72a8a4bec" },
   "mason.nvim": { "branch": "main", "commit": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "ebd66767191714e008ce73b769518a763ff31bdc" },
-  "neural-open.nvim": { "branch": "main", "commit": "83af87f096104ea3ddd66d9c4b798a90d3ee4f2b" },
   "nightfox.nvim": { "branch": "main", "commit": "4dacd3f0185a2227bdf3b6c0975a8f0bf87cac9a" },
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },
   "nui.nvim": { "branch": "main", "commit": "10fc361835c856ba4233ef5ea135b919bf3dce97" },
@@ -28,5 +27,6 @@
   "terminal.nvim": { "branch": "master", "commit": "2bd1545caf89d075b6bc2a1a5c56ff177edcf3f6" },
   "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "6264451f14119d63a52580e5198d6baf8518b0b2" },
   "treesitter-parser-registry": { "branch": "main", "commit": "6eb15358bb9fc88f0d3401d8538d56652e9bdf3c" },
+  "tuios-nvim-navigator": { "branch": "main", "commit": "e52540c34f638f56d0bb31dec0d9556af48250d4" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }
