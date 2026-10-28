@@ -78,7 +78,27 @@ return {
          },
       },
    },
-   sources = {},
+   sources = {
+      projects = {
+         -- Default projects source with `fd --no-ignore`.
+         finder = function(opts, ctx)
+            local projects = require("snacks.picker.source.recent").projects
+            local proc = require("snacks.picker.source.proc")
+            local original = proc.proc
+
+            proc.proc = function(cmd_opts, cmd_ctx)
+               table.insert(cmd_opts.args, 1, "--no-ignore")
+               return original(cmd_opts, cmd_ctx)
+            end
+            local ok, finder = pcall(projects, opts, ctx)
+            proc.proc = original
+            if not ok then error(finder, 0) end
+            return finder
+         end,
+         dev = { "~/ghq" },
+         max_depth = 4,
+      },
+   },
    actions = {
       load_session = function(picker, item)
          picker:close()
