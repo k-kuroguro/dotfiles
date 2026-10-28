@@ -31,7 +31,11 @@ fi
 inline = """
 target_dir="${ZDOTDIR}/defer"
 if [[ -d "${target_dir}" ]]; then
+   # Load completions first to ensure compinit runs before others.
+   zsh-defer source "${target_dir}/completion.zsh"
+
    while IFS= read -r file; do
+      [[ "${file}" == "${target_dir}/completion.zsh" ]] && continue
       zsh-defer source "${file}"
    done < <(find "${target_dir}" -type f -name "*.zsh" | sort)
 fi
