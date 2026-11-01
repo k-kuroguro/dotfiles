@@ -40,6 +40,7 @@ dotfiles.default_mode = "symlink"
 "aqua:x-motemen/ghq" = "1.11.2"
 "core:deno" = "2.9.8"
 "core:rust" = { version = "1.99.0", profile = "default" }
+"github:AltanS/collie" = "1.24.0"
 "github:microsoft/apm" = "0.35.0"
 
 [dotfiles]
@@ -56,6 +57,7 @@ dotfiles.default_mode = "symlink"
 "~/.config/rustfmt" = "~/dotfiles/config/rustfmt"
 "~/.config/tuios" = "~/dotfiles/config/tuios"
 "~/.config/zsh" = "~/dotfiles/config/zsh"
+"~/.collie/config.toml" = "~/dotfiles/config/collie/config.toml"
 "~/.zshenv" = "~/dotfiles/config/.zshenv"
 
 [bootstrap.repos]
