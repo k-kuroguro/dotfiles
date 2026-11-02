@@ -3,6 +3,8 @@ disable_backends = ["npm", "asdf", "vfox", "ubi"]
 minimum_release_age = "7d"
 dotfiles.root = "~/dotfiles"
 dotfiles.default_mode = "symlink"
+self_update.auto = true
+tool_update.global_auto = true
 
 [tools]
 "aqua:ajeetdsouza/zoxide" = "0.10.0"
