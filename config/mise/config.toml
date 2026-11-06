@@ -12,6 +12,7 @@ tool_update.global_auto = true
 "aqua:antonmedv/fx" = "40.0.1"
 "aqua:ast-grep/ast-grep" = "0.51.0"
 "aqua:astral-sh/uv" = "0.13.5"
+"aqua:atuinsh/atuin" = "18.24.4"
 "aqua:betterleaks/betterleaks" = "1.9.0"
 "aqua:BurntSushi/ripgrep" = "15.2.0"
 "aqua:casey/just" = "1.59.0"
@@ -46,6 +47,7 @@ tool_update.global_auto = true
 [dotfiles]
 "~/.cargo/config.toml" = "~/dotfiles/config/cargo/config.toml"
 "~/.clang-format" = "~/dotfiles/config/clang-format/.clang-format"
+"~/.config/atuin" = "~/dotfiles/config/atuin"
 "~/.config/bat" = "~/dotfiles/config/bat"
 "~/.config/bottom" = "~/dotfiles/config/bottom"
 "~/.config/fd" = "~/dotfiles/config/fd"

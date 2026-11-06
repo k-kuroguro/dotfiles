@@ -1,0 +1,27 @@
+invert = true
+show_preview = false
+show_help = false
+show_tabs = false
+exit_mode = "return-query"
+enter_accept = false
+keymap_mode = "vim-insert"
+
+[search]
+filters = ["global", "session", "workspace"]
+
+[keys]
+scroll_exits = false
+
+[ui]
+columns = ["command"]
+
+[daemon]
+enabled = true
+autostart = true
+
+[threads]
+capture = true
+
+[threads.resume]
+claude = "tuios-thread-open {id} claude --resume {id}"
+codex = "tuios-thread-open {id} codex resume {id}"
