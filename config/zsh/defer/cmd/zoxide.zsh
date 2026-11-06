@@ -25,7 +25,7 @@ if command -v zoxide >/dev/null 2>&1; then
       if [[ $# == 0 ]]; then
          __zoxide_zi
       else
-         builtin cd -- "$@"
+         builtin cd "$@"
       fi
    }
 fi
