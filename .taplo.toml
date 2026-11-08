@@ -1,0 +1,27 @@
+[formatting]
+align_comments = false
+allowed_blank_lines = 1
+column_width = 120
+indent_string = "   "
+reorder_arrays = false
+reorder_keys = true
+
+[[rule]]
+include = ["config/mise/config.toml"]
+keys = ["settings"]
+
+[rule.formatting]
+reorder_arrays = true
+
+[[rule]]
+include = ["config/ruff/ruff.toml"]
+keys = ["lint"]
+
+[rule.formatting]
+reorder_arrays = true
+
+[[rule]]
+include = ["config/zsh/sheldon/plugins.toml"]
+
+[rule.formatting]
+reorder_keys = false

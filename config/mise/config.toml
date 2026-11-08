@@ -43,6 +43,7 @@ tool_update.global_auto = true
 "core:rust" = { version = "1.99.0", profile = "default" }
 "github:AltanS/collie" = "1.24.0"
 "github:microsoft/apm" = "0.35.0"
+"aqua:tamasfe/taplo" = "0.10.0"
 
 [dotfiles]
 "~/.cargo/config.toml" = "~/dotfiles/config/cargo/config.toml"

@@ -43,6 +43,7 @@ __ensure_completion 'prek' 'prek util generate-shell-completion zsh' '_prek'
 __ensure_completion 'betterleaks' 'betterleaks completion zsh' '_betterleaks'
 __ensure_completion 'ast-grep' 'ast-grep completions zsh' '_ast-grep'
 __ensure_completion 'atuin' 'atuin gen-completion --shell zsh' '_atuin'
+__ensure_completion 'taplo' 'taplo completions zsh' '_taplo'
 
 __ensure_completion 'btm' 'cmd_path=$(mise which btm 2>/dev/null) && cat "${cmd_path:h:h}/completion/_btm"' '_btm'
 __ensure_completion 'hyperfine' 'cmd_path=$(mise which hyperfine 2>/dev/null) && cat "${cmd_path:h:h}/autocomplete/_hyperfine"' '_hyperfine'
