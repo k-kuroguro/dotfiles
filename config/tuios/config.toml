@@ -1,23 +1,23 @@
 [appearance]
-theme = "carbonfox"
-border_style = "normal"
 background = "#161616"
 border_focused_color = "#33b1ff"
+border_style = "normal"
 border_unfocused_color = "#7b7c7e"
-window_title_style = "plain"
-window_title_align = "left"
-hide_window_buttons = true
-dockbar_position = "bottom"
-dock_pill_caps = false
 dock_compact = true
+dock_pill_caps = false
 dock_workspace_tab_format = "{index}"
+dockbar_position = "bottom"
+hide_window_buttons = true
 nvim_navigation = true
+theme = "carbonfox"
+window_title_align = "left"
+window_title_style = "plain"
 
 [startup]
-tiled = true
 daemon = true
 open_default_window = true
 start_in_terminal_mode = true
+tiled = true
 
 [keybindings]
 leader_key = "ctrl+b"
@@ -26,10 +26,10 @@ leader_key = "ctrl+b"
 toggle_tiling = []
 
 [keybindings.terminal_mode]
-terminal_focus_left = ["ctrl+h"]
 terminal_focus_down = ["ctrl+j"]
-terminal_focus_up = ["ctrl+k"]
+terminal_focus_left = ["ctrl+h"]
 terminal_focus_right = ["ctrl+l"]
+terminal_focus_up = ["ctrl+k"]
 
 [keybindings.prefix_mode]
 prefix_toggle_tiling = []

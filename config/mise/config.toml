@@ -1,12 +1,15 @@
 [settings]
-disable_backends = ["npm", "asdf", "vfox", "ubi"]
-minimum_release_age = "7d"
-dotfiles.root = "~/dotfiles"
+disable_backends = ["asdf", "npm", "ubi", "vfox"]
 dotfiles.default_mode = "symlink"
+dotfiles.root = "~/dotfiles"
+minimum_release_age = "7d"
 self_update.auto = true
 tool_update.global_auto = true
 
 [tools]
+"aqua:BurntSushi/ripgrep" = "15.2.0"
+"aqua:ClementTsang/bottom" = "0.14.9"
+"aqua:Gaurav-Gosain/tuios" = "0.12.1"
 "aqua:ajeetdsouza/zoxide" = "0.10.0"
 "aqua:anthropics/claude-code" = "2.1.310"
 "aqua:antonmedv/fx" = "40.0.1"
@@ -14,12 +17,9 @@ tool_update.global_auto = true
 "aqua:astral-sh/uv" = "0.13.5"
 "aqua:atuinsh/atuin" = "18.24.4"
 "aqua:betterleaks/betterleaks" = "1.9.0"
-"aqua:BurntSushi/ripgrep" = "15.2.0"
 "aqua:casey/just" = "1.59.0"
-"aqua:ClementTsang/bottom" = "0.14.9"
 "aqua:cli/cli" = "2.103.2"
 "aqua:eza-community/eza" = "0.23.5"
-"aqua:Gaurav-Gosain/tuios" = "0.12.1"
 "aqua:j178/prek" = "0.5.7"
 "aqua:jqlang/jq" = "1.8.2"
 "aqua:junegunn/fzf" = "0.74.5"
@@ -36,6 +36,7 @@ tool_update.global_auto = true
 "aqua:sharkdp/hyperfine" = "2.0.0"
 "aqua:suzuki-shunsuke/pinact" = "5.0.0"
 "aqua:svenstaro/miniserve" = "0.35.0"
+"aqua:tamasfe/taplo" = "0.10.0"
 "aqua:tree-sitter/tree-sitter" = "0.27.1"
 "aqua:watchexec/watchexec" = "2.8.0"
 "aqua:x-motemen/ghq" = "1.11.2"
@@ -43,11 +44,11 @@ tool_update.global_auto = true
 "core:rust" = { version = "1.99.0", profile = "default" }
 "github:AltanS/collie" = "1.24.0"
 "github:microsoft/apm" = "0.35.0"
-"aqua:tamasfe/taplo" = "0.10.0"
 
 [dotfiles]
 "~/.cargo/config.toml" = "~/dotfiles/config/cargo/config.toml"
 "~/.clang-format" = "~/dotfiles/config/clang-format/.clang-format"
+"~/.collie/config.toml" = "~/dotfiles/config/collie/config.toml"
 "~/.config/atuin" = "~/dotfiles/config/atuin"
 "~/.config/bat" = "~/dotfiles/config/bat"
 "~/.config/bottom" = "~/dotfiles/config/bottom"
@@ -60,7 +61,6 @@ tool_update.global_auto = true
 "~/.config/rustfmt" = "~/dotfiles/config/rustfmt"
 "~/.config/tuios" = "~/dotfiles/config/tuios"
 "~/.config/zsh" = "~/dotfiles/config/zsh"
-"~/.collie/config.toml" = "~/dotfiles/config/collie/config.toml"
 "~/.zshenv" = "~/dotfiles/config/.zshenv"
 
 [bootstrap.repos]
