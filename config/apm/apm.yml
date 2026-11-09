@@ -1,0 +1,10 @@
+name: global
+version: 1.0.0
+targets:
+  - claude
+  - codex
+dependencies:
+  apm:
+    - yoshiko-pg/difit/skills/difit#v5.0.12
+    - yoshiko-pg/difit/skills/difit-review#v5.0.12
+    - k-kuroguro/difit-hub/skills/difit-hub#v1.1.0

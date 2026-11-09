@@ -43,9 +43,11 @@ tool_update.global_auto = true
 "core:deno" = "2.9.8"
 "core:rust" = { version = "1.99.0", profile = "default" }
 "github:AltanS/collie" = "1.24.0"
+"github:k-kuroguro/difit-hub" = "1.1.0"
 "github:microsoft/apm" = "0.35.0"
 
 [dotfiles]
+"~/.apm/apm.yml" = "~/dotfiles/config/apm/apm.yml"
 "~/.cargo/config.toml" = "~/dotfiles/config/cargo/config.toml"
 "~/.clang-format" = "~/dotfiles/config/clang-format/.clang-format"
 "~/.collie/config.toml" = "~/dotfiles/config/collie/config.toml"
@@ -65,3 +67,6 @@ tool_update.global_auto = true
 
 [bootstrap.repos]
 "~/dotfiles" = { url = "https://github.com/k-kuroguro/dotfiles", ref = "main" }
+
+[tasks.bootstrap]
+run = "apm install -g"
