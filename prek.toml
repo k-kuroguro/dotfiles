@@ -1,0 +1,46 @@
+#:schema https://www.schemastore.org/prek.json
+
+[[repos]]
+hooks = [{ id = "trailing-whitespace" }, { id = "end-of-file-fixer" }, { id = "check-added-large-files" }]
+repo = "builtin"
+
+[[repos]]
+hooks = [{ id = "stylua-system" }]
+repo = "https://github.com/JohnnyMorganz/StyLua"
+rev = "56f9630407f6bf6ee524fb1d7fe71f005a570478" # frozen: v2.6.0
+
+[[repos]]
+repo = "https://github.com/betterleaks/betterleaks"
+rev = "8d77e1712fb06fd14444cc648686f1d5655e28a8" # frozen: v1.10.0
+
+[[repos.hooks]]
+id = "betterleaks-system"
+
+[[repos.hooks]]
+entry = "betterleaks dir ./ --verbose"
+id = "betterleaks-system"
+stages = ["manual"]
+
+[[repos]]
+repo = "local"
+
+[[repos.hooks]]
+entry = "taplo fmt"
+id = "taplo"
+language = "system"
+name = "taplo"
+types = ["toml"]
+
+[[repos.hooks]]
+entry = "shuck format"
+id = "shuck"
+language = "system"
+name = "shuck"
+types = ["shell"]
+
+[[repos.hooks]]
+entry = "yamlfmt"
+id = "yamlfmt"
+language = "system"
+name = "yamlfmt"
+types = ["yaml"]

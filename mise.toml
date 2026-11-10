@@ -1,0 +1,4 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+[tasks.fmt]
+run = "prek run --all-files --stage manual"

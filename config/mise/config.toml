@@ -10,6 +10,7 @@ tool_update.global_auto = true
 "aqua:BurntSushi/ripgrep" = "15.2.0"
 "aqua:ClementTsang/bottom" = "0.14.9"
 "aqua:Gaurav-Gosain/tuios" = "0.12.1"
+"aqua:JohnnyMorganz/StyLua" = "2.6.0"
 "aqua:ajeetdsouza/zoxide" = "0.10.0"
 "aqua:anthropics/claude-code" = "2.1.310"
 "aqua:antonmedv/fx" = "40.0.1"
@@ -20,6 +21,7 @@ tool_update.global_auto = true
 "aqua:casey/just" = "1.59.0"
 "aqua:cli/cli" = "2.103.2"
 "aqua:eza-community/eza" = "0.23.5"
+"aqua:google/yamlfmt" = "0.21.0"
 "aqua:j178/prek" = "0.5.7"
 "aqua:jqlang/jq" = "1.8.2"
 "aqua:junegunn/fzf" = "0.74.5"
@@ -43,6 +45,7 @@ tool_update.global_auto = true
 "core:deno" = "2.9.8"
 "core:rust" = { version = "1.99.0", profile = "default" }
 "github:AltanS/collie" = "1.24.0"
+"github:ewhauser/shuck" = "0.2.7"
 "github:k-kuroguro/difit-hub" = "1.1.0"
 "github:microsoft/apm" = "0.35.0"
 

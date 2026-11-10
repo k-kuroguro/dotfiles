@@ -1,0 +1,4 @@
+[format]
+indent-style = "space"
+indent-width = 3
+space-redirects = true
