@@ -1,2 +1,4 @@
+#: schema https://www.schemastore.org/cargo-config.json
+
 [target.'cfg(target_os = "linux")']
 rustflags = ["-C", "link-arg=-fuse-ld=mold"]
