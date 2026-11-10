@@ -7,7 +7,7 @@ export FZF_CTRL_R_COMMAND= # Disable fzf's Ctrl-R binding in favor of atuin.
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND='fd --type d --hidden --color always'
 
-type -p fzf &>/dev/null && source <(command fzf --zsh)
+type -p fzf &> /dev/null && source <(command fzf --zsh)
 
 _fzf_compgen_path() {
    fd --hidden --color always . "$1"
@@ -22,9 +22,8 @@ _fzf_comprun() {
    shift
 
    case "${command}" in
-      cd) fzf --preview 'eza -T -L=2 --color=always {}' "$@" ;;
-      export|unset) fzf --preview "eval 'echo \$'{}" "$@" ;;
-      *) fzf "$@" ;;
+   cd) fzf --preview 'eza -T -L=2 --color=always {}' "$@" ;;
+   export | unset) fzf --preview "eval 'echo \$'{}" "$@" ;;
+   *) fzf "$@" ;;
    esac
 }
-

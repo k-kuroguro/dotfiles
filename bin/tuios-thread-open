@@ -9,11 +9,11 @@ set -eu
 id="${1}"
 shift
 
-if [[ -n ${TUIOS_ENV:-} ]] && command -v tuios &>/dev/null; then
+if [[ -n ${TUIOS_ENV:-} ]] && command -v tuios &> /dev/null; then
    row=$(
-      tuios list-agents --all-sessions --json 2>/dev/null |
-      jq -r --arg id "${id}" '.agents[] | select(.agent_session_id == $id) | "\(.session)\t\(.window_id)"' |
-      head -n1
+      tuios list-agents --all-sessions --json 2> /dev/null |
+         jq -r --arg id "${id}" '.agents[] | select(.agent_session_id == $id) | "\(.session)\t\(.window_id)"' |
+         head -n1
    ) || row=""
 
    if [[ -n "${row}" ]]; then
@@ -21,7 +21,7 @@ if [[ -n ${TUIOS_ENV:-} ]] && command -v tuios &>/dev/null; then
       if [[ "${session}" != "${TUIOS_SESSION:-}" ]]; then
          tuios switch-session "${session}"
       fi
-      exec tuios focus-window -s "${session}" "${window}" >/dev/null
+      exec tuios focus-window -s "${session}" "${window}" > /dev/null
    fi
 fi
 

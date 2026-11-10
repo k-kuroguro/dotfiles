@@ -1,11 +1,11 @@
 __ensure_completion() {
-	local cmd_name="$1"
+   local cmd_name="$1"
    local gen_cmd="$2"
    local filename="$3"
    local dir="${ZDOTDIR}/completions.local"
    local filepath="${dir}/${filename}"
 
-   if ! command -v "${cmd_name}" >/dev/null 2>&1; then
+   if ! command -v "${cmd_name}" > /dev/null 2>&1; then
       return
    fi
 
@@ -15,7 +15,7 @@ __ensure_completion() {
 }
 
 __ensure_completion_from_url() {
-	local cmd_name="$1"
+   local cmd_name="$1"
    local url="$2"
    local filename="$3"
    __ensure_completion "${cmd_name}" "curl -fsSL '${url}'" "${filename}"

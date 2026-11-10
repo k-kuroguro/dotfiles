@@ -1,14 +1,14 @@
 __prompt_command_timer_preexec() {
-   __prompt_timer_start_ms=$(( $(printf "%.0f" "${EPOCHREALTIME} * 1000") ))
+   __prompt_timer_start_ms=$(($(printf "%.0f" "${EPOCHREALTIME} * 1000")))
    __prompt_elapsed_time=''
 }
 
 __prompt_command_timer_precmd() {
    if [[ -n "${__prompt_timer_start_ms}" ]]; then
-      local __timer_end_ms=$(( $(printf "%.0f" "${EPOCHREALTIME} * 1000") ))
-      local elapsed_ms=$(( __timer_end_ms - __prompt_timer_start_ms ))
+      local __timer_end_ms=$(($(printf "%.0f" "${EPOCHREALTIME} * 1000")))
+      local elapsed_ms=$((__timer_end_ms - __prompt_timer_start_ms))
 
-      if (( elapsed_ms > 0 )); then
+      if ((elapsed_ms > 0)); then
          __prompt_elapsed_time=" [%F{3}󱦟 $(pretty_ms "${elapsed_ms}")%f]"
       else
          __prompt_elapsed_time=''
@@ -48,7 +48,7 @@ __prompt_git() {
 
 VIRTUAL_ENV_DISABLE_PROMPT=1
 __prompt_python() {
-   if [[ -n "${VIRTUAL_ENV:+x}" ]] && command -v python &>/dev/null; then
+   if [[ -n "${VIRTUAL_ENV:+x}" ]] && command -v python &> /dev/null; then
       local env_name="$(echo "${VIRTUAL_ENV_PROMPT//[()]/}" | xargs)"
       if [[ -z "${env_name}" ]]; then
          env_name="$(basename "${VIRTUAL_ENV}")"
@@ -60,7 +60,7 @@ __prompt_python() {
 
 typeset -g __prompt_rust=''
 __prompt_rust_job() {
-   if ! command -v rustc &>/dev/null; then
+   if ! command -v rustc &> /dev/null; then
       return
    fi
 
@@ -77,7 +77,7 @@ __prompt_rust_job() {
 
 typeset -g __prompt_deno=''
 __prompt_deno_job() {
-   if ! command -v deno &>/dev/null; then
+   if ! command -v deno &> /dev/null; then
       return
    fi
 
@@ -96,7 +96,7 @@ typeset -g __prompt_gcloud=''
 __prompt_gcloud_job() {
    local enabled=$1
 
-   if ! command -v gcloud &>/dev/null || [[ "${enabled}" != "1" ]]; then
+   if ! command -v gcloud &> /dev/null || [[ "${enabled}" != "1" ]]; then
       return
    fi
 
@@ -112,19 +112,19 @@ __prompt_callback() {
    local job_name=$1 return_code=$2 output=$3 elapsed=$4 stderr=$5 has_next=$6
 
    case ${job_name} in
-      __prompt_deno_job) __prompt_deno="${output}" ;;
-      __prompt_rust_job) __prompt_rust="${output}" ;;
-      __prompt_gcloud_job) __prompt_gcloud="${output}" ;;
+   __prompt_deno_job) __prompt_deno="${output}" ;;
+   __prompt_rust_job) __prompt_rust="${output}" ;;
+   __prompt_gcloud_job) __prompt_gcloud="${output}" ;;
    esac
 
-   (( has_next == 0 )) && zle && zle reset-prompt
+   ((has_next == 0)) && zle && zle reset-prompt
 }
 
 __prompt() {
    local exit_code=$?
 
    local prompt_symbol
-   if (( exit_code == 0 )); then
+   if ((exit_code == 0)); then
       prompt_symbol='❯'
    else
       prompt_symbol='%F{9}❯%f'
@@ -142,9 +142,9 @@ __prompt() {
 
 PROMPT='$(__prompt)'
 
-async_stop_worker __prompt_worker 2>/dev/null
+async_stop_worker __prompt_worker 2> /dev/null
 async_start_worker __prompt_worker
-async_unregister_callback __prompt_worker 2>/dev/null
+async_unregister_callback __prompt_worker 2> /dev/null
 async_register_callback __prompt_worker __prompt_callback
 
 __prompt_pre_cmd() {

@@ -1,6 +1,6 @@
-command -v zoxide &>/dev/null && source <(zoxide init zsh --no-cmd)
+command -v zoxide &> /dev/null && source <(zoxide init zsh --no-cmd)
 
-if command -v zoxide >/dev/null 2>&1; then
+if command -v zoxide > /dev/null 2>&1; then
    __zoxide_zi() {
       __zoxide_doctor
       builtin local result
@@ -17,7 +17,7 @@ if command -v zoxide >/dev/null 2>&1; then
             ' |
             fzf \
                --no-sort \
-               --preview 'echo {} | awk "{print \$2}" | xargs eza -T -L=2 --color=always' \
+               --preview 'echo {} | awk "{print \$2}" | xargs eza -T -L=2 --color=always'
       )" && __zoxide_cd "${result#* }"
    }
 

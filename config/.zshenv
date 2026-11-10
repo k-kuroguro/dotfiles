@@ -11,27 +11,27 @@ export DOTFILES_DIR="${HOME}/dotfiles"
 
 mkdir -p "${ZCACHEDIR}" "${ZSTATEDIR}"
 
-setopt no_global_rcs           # Skip sourcing `/etc/z*` files except `/etc/zshenv`.
-export skip_global_compinit=1  # Skip system-wide compinit in `/etc/zshrc`.
+setopt no_global_rcs          # Skip sourcing `/etc/z*` files except `/etc/zshenv`.
+export skip_global_compinit=1 # Skip system-wide compinit in `/etc/zshrc`.
 
 typeset -U path PATH
 path=(
    "${HOME}/.local/share/mise/shims"(N-/)
-	"${HOME}/bin"(N-/)
-	"${HOME}/.local/bin"(N-/)
-	"${HOME}/.cargo/bin"(N-/)
-	"${HOME}/.deno/bin"(N-/)
-	"${HOME}/.luarocks/bin"(N-/)
+   "${HOME}/bin"(N-/)
+   "${HOME}/.local/bin"(N-/)
+   "${HOME}/.cargo/bin"(N-/)
+   "${HOME}/.deno/bin"(N-/)
+   "${HOME}/.luarocks/bin"(N-/)
    "${DOTFILES_DIR}/bin"(N-/)
-	"${(@)path}"
+   "${(@)path}"
 )
 export PATH
 
 fpath=(
-	"${ZDOTDIR}/completions.local"(N-/)
-	'/usr/local/share/zsh/site-functions'(N-/)
-	'/usr/share/zsh/site-functions'(N-/)
-	"${(@)fpath}"
+   "${ZDOTDIR}/completions.local"(N-/)
+   '/usr/local/share/zsh/site-functions'(N-/)
+   '/usr/share/zsh/site-functions'(N-/)
+   "${(@)fpath}"
 )
 export FPATH
 
