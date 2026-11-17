@@ -3,15 +3,14 @@ background = "#161616"
 border_focused_color = "#33b1ff"
 border_style = "normal"
 border_unfocused_color = "#7b7c7e"
-dock_compact = true
-dock_pill_caps = false
-dock_workspace_tab_format = "{index}"
-dockbar_position = "bottom"
-hide_window_buttons = true
+dockbar_position = "hidden"
+motion = "none"
 nvim_navigation = true
+shared_borders = true
 theme = "carbonfox"
-window_title_align = "left"
-window_title_style = "plain"
+
+[appearance.sidebar]
+enabled = false
 
 [startup]
 daemon = true
