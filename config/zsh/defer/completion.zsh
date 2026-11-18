@@ -21,7 +21,6 @@ __ensure_completion_from_url() {
    __ensure_completion "${cmd_name}" "curl -fsSL '${url}'" "${filename}"
 }
 
-__ensure_completion 'herdr' 'herdr completion zsh' '_herdr'
 __ensure_completion 'codex' 'codex completion zsh' '_codex'
 __ensure_completion 'mise' 'mise completion zsh' '_mise'
 __ensure_completion 'bat' 'bat --completion zsh' '_bat'
@@ -30,7 +29,6 @@ __ensure_completion 'fx' 'fx --comp zsh' '_fx'
 __ensure_completion 'gh' 'gh completion -s zsh' '_gh'
 __ensure_completion 'just' 'just --completions zsh' '_just'
 __ensure_completion 'miniserve' 'miniserve --print-completions zsh' '_miniserve'
-__ensure_completion 'pueue' 'pueue completions zsh' '_pueue'
 __ensure_completion 'rg' 'rg --generate complete-zsh' '_rg'
 __ensure_completion 'rustup' 'rustup completions zsh cargo' '_cargo'
 __ensure_completion 'rustup' 'rustup completions zsh' '_rustup'
