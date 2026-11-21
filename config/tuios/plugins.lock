@@ -1,0 +1,9 @@
+version = 1
+
+[[plugin]]
+id = 'annotate'
+format = 'herdr'
+source = 'https://github.com/plannotator/herdr-annotate'
+commit = 'dd147a9faf5ab7d716a31abca070c80af508ffbc'
+tree = 'f5296b0774426130843dd502a80543a58434f319'
+approved = 'sha256:250e3ac39808e641c1e410e8f566773008a6e89d140b8d401e80c2cb65a2caa6'

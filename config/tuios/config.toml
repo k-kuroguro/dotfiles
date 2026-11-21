@@ -4,10 +4,13 @@ border_focused_color = "#33b1ff"
 border_style = "normal"
 border_unfocused_color = "#7b7c7e"
 dockbar_position = "hidden"
+hide_window_buttons = true
 motion = "none"
 nvim_navigation = true
 shared_borders = true
 theme = "carbonfox"
+window_title_align = "left"
+window_title_style = "plain"
 
 [appearance.sidebar]
 enabled = false
@@ -31,7 +34,23 @@ terminal_focus_right = ["ctrl+l"]
 terminal_focus_up = ["ctrl+k"]
 
 [keybindings.prefix_mode]
+prefix_next_attention = []
 prefix_toggle_tiling = []
 
 [keybindings.window_prefix]
 window_prefix_tiling = []
+
+[[keybindings.command]]
+command = "annotate.last"
+description = "review the agent's last reply"
+key = "prefix+l"
+type = "plugin_action"
+
+[[keybindings.command]]
+command = "annotate.last-newest"
+description = "review the agent's newest reply"
+key = "prefix+o"
+type = "plugin_action"
+
+[plugins]
+enabled = ["annotate"]

@@ -47,8 +47,8 @@ tool_update.global_auto = true
 "core:deno" = "2.9.8"
 "core:rust" = { version = "1.99.0", profile = "default" }
 "github:AltanS/collie" = "1.24.0"
+"github:backnotprop/plannotator" = "0.29.0"
 "github:ewhauser/shuck" = "0.2.7"
-"github:k-kuroguro/difit-hub" = "1.1.0"
 "github:microsoft/apm" = "0.35.0"
 
 [dotfiles]
